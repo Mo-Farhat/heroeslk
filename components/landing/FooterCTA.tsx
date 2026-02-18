@@ -2,20 +2,20 @@ import Link from "next/link";
 
 export default function FooterCTA() {
     return (
-        <section className="py-24 bg-nuziiBeige">
+        <section className="py-24 bg-heroCrimson text-white">
             <div className="container mx-auto px-4 text-center">
-                <h2 className="text-4xl md:text-5xl font-light text-nuziiText mb-6">
-                    Join the Nuzii community.
+                <h2 className="text-4xl md:text-6xl font-bold font-oswald uppercase tracking-tighter mb-6 leading-none">
+                    Initiate Sequence
                 </h2>
-                <p className="text-lg text-nuziiTextLight mb-10 max-w-xl mx-auto">
-                    Get early access to new drops, style edits, and exclusive offers.
-                    Elevate your everyday with us.
+                <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto font-medium tracking-wide">
+                    Subscribe for mission briefings, drop alerts, and exclusive techwear intel.
+                    Elevate your operational capacity.
                 </p>
                 <Link
                     href="/shop"
-                    className="inline-block px-10 py-4 bg-nuziiText text-white rounded-full text-lg font-medium shadow-lg hover:bg-nuziiRoseGoldDark hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    className="inline-block px-12 py-5 bg-black text-white text-lg font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 border border-black hover:border-white"
                 >
-                    Shop the Collection
+                    Access The Archive
                 </Link>
             </div>
         </section>

@@ -3,23 +3,29 @@
 import { AlignLeft } from "lucide-react";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
-import { FEATURED_CATEGORIES_QUERYResult } from "@/sanity.types";
+// import { FEATURED_CATEGORIES_QUERYResult } from "@/sanity.types";
 
-const MobileMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResult }) => {
+interface Category {
+  _id: string;
+  title: string;
+  slug: { current: string };
+}
+
+const MobileMenu = ({ categories }: { categories: Category[] }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
   return (
     <>
-      <button onClick={toggleSidebar} className="xl:hidden text-nuziiText hover:text-nuziiRoseGoldDark transition-colors">
+      <button onClick={toggleSidebar} className="xl:hidden text-white hover:text-heroCrimson transition-colors">
         <AlignLeft className="w-6 h-6" />
       </button>
       <div className="xl:hidden">
         <Sidebar
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
-          categories={categories}
+          categories={categories as any} 
         />
       </div>
     </>
@@ -27,3 +33,4 @@ const MobileMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResul
 };
 
 export default MobileMenu;
+

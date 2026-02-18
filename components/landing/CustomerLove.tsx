@@ -1,33 +1,33 @@
-import { MessageCircle } from "lucide-react";
+import { Terminal, Star } from "lucide-react";
 
 const testimonials = [
     {
-        quote: "The quality is amazing, honestly better than I expected for the price.",
-        author: "Sarah M.",
-        role: "Verified Buyer"
+        quote: "The quality is amazing, heavy structure but breathable. Perfect for the city.",
+        author: "SARAH M.",
+        role: "STATUS: VERIFIED"
     },
     {
-        quote: "Finally found my style! Modest, chic, and so comfortable.",
-        author: "Amina K.",
-        role: "Verified Buyer"
+        quote: "Finally found techwear that fits right. Precision cuts are on point.",
+        author: "AMINA K.",
+        role: "STATUS: VERIFIED"
     },
     {
-        quote: "Looks even better in real life. The fabric falls so beautifully.",
-        author: "Layla R.",
-        role: "Verified Buyer"
+        quote: "Fabric durability is unmatched. This is now my daily driver.",
+        author: "LAYLA R.",
+        role: "STATUS: VERIFIED"
     }
 ];
 
 export default function CustomerLove() {
     return (
-        <section className="py-20 bg-white overflow-hidden">
+        <section className="py-20 bg-heroBlack overflow-hidden border-b border-gray-900">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-light text-nuziiText">
-                        Customer Love
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 font-oswald uppercase tracking-wide">
+                        Field Reports
                     </h2>
-                    <p className="text-nuziiTextLight mt-4">
-                        Real messages from happy shoppers
+                    <p className="text-gray-500 font-mono text-sm tracking-widest uppercase">
+                        Intel from deployed operatives.
                     </p>
                 </div>
 
@@ -35,21 +35,29 @@ export default function CustomerLove() {
                     {testimonials.map((item, index) => (
                         <div
                             key={index}
-                            className="relative bg-nuziiCream p-8 rounded-2xl rounded-tr-none shadow-sm border border-nuziiBeige"
+                            className="relative bg-gray-900/50 p-8 border-l-2 border-gray-700 hover:border-heroCrimson transition-colors duration-300"
                         >
-                            <div className="absolute -top-4 -right-4 w-10 h-10 bg-nuziiRoseGold text-white rounded-full flex items-center justify-center shadow-md">
-                                <MessageCircle className="w-5 h-5" />
+                            <div className="absolute -top-4 -right-4 w-10 h-10 bg-gray-800 text-heroCrimson flex items-center justify-center border border-gray-700">
+                                <Terminal className="w-5 h-5" />
                             </div>
 
-                            <p className="text-nuziiText text-lg italic mb-6 leading-relaxed">
+                            <div className="flex gap-1 mb-4 text-heroCrimson">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star key={i} className="w-3 h-3 fill-current" />
+                                ))}
+                            </div>
+
+                            <p className="text-gray-300 text-lg font-medium italic mb-6 leading-relaxed font-sans">
                                 &ldquo;{item.quote}&rdquo;
                             </p>
 
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-gray-200 rounded-full flex-shrink-0" />
+                            <div className="flex items-center gap-3 border-t border-gray-800 pt-4">
+                                <div className="w-10 h-10 bg-gray-800 flex items-center justify-center text-xs font-bold text-white">
+                                    {item.author.charAt(0)}
+                                </div>
                                 <div>
-                                    <h4 className="font-medium text-nuziiText">{item.author}</h4>
-                                    <span className="text-xs text-nuziiRoseGoldDark font-medium uppercase tracking-wide">
+                                    <h4 className="font-bold text-white uppercase tracking-wider font-oswald">{item.author}</h4>
+                                    <span className="text-[10px] text-heroCrimson font-bold uppercase tracking-widest font-mono">
                                         {item.role}
                                     </span>
                                 </div>
@@ -59,12 +67,11 @@ export default function CustomerLove() {
                 </div>
 
                 {/* Social Proof Elements */}
-                <div className="mt-16 flex flex-wrap justify-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                    {/* Placeholders for social logos */}
-                    <div className="h-8 w-24 bg-gray-200 rounded" />
-                    <div className="h-8 w-24 bg-gray-200 rounded" />
-                    <div className="h-8 w-24 bg-gray-200 rounded" />
-                    <div className="h-8 w-24 bg-gray-200 rounded" />
+                <div className="mt-16 flex flex-wrap justify-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
+                    {/* Placeholders for partner logos */}
+                     {[...Array(4)].map((_, i) => (
+                        <div key={i} className="h-8 w-32 bg-gray-700/50 skew-x-12" />
+                    ))}
                 </div>
             </div>
         </section>

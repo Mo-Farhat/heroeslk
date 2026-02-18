@@ -1,73 +1,31 @@
-import { client } from "@/sanity/lib/client";
-import {
-  SHOP_HERO_QUERY,
-  PRODUCT_SHOWCASE_QUERY,
-  PROMO_GRID_BANNERS_QUERY,
-  MID_PAGE_BANNERS_QUERY,
-  NEW_ARRIVALS_QUERY,
-  BEST_SELLING_QUERY,
-  TOP_RATED_QUERY,
-  FEATURED_CATEGORIES_QUERY,
-  ALL_PRODUCTS_QUERY,
-} from "@/sanity/helpers/shopQueries";
 import ShopHero from "@/components/shop/ShopHero";
-import ProductShowcaseRow from "@/components/shop/ProductShowcaseRow";
-import PromotionalSection from "@/components/shop/PromotionalSection";
-import FeaturedProducts from "@/components/shop/FeaturedProducts";
-import MidPageBanners from "@/components/shop/MidPageBanners";
-import FeaturedCategories from "@/components/shop/FeaturedCategories";
 import AllProductsSection from "@/components/shop/AllProductsSection";
+import { MOCK_CATEGORIES, MOCK_PRODUCTS } from "@/constants/mockData";
 
-const ShopPage = async () => {
-  // Fetch all data in parallel
-  const [
-    heroes,
-    showcases,
-    promoBanners,
-    midPageBanners,
-    newArrivals,
-    bestSelling,
-    topRated,
-    categories,
-    allProducts,
-  ] = await Promise.all([
-    client.fetch(SHOP_HERO_QUERY),
-    client.fetch(PRODUCT_SHOWCASE_QUERY),
-    client.fetch(PROMO_GRID_BANNERS_QUERY),
-    client.fetch(MID_PAGE_BANNERS_QUERY),
-    client.fetch(NEW_ARRIVALS_QUERY),
-    client.fetch(BEST_SELLING_QUERY),
-    client.fetch(TOP_RATED_QUERY),
-    client.fetch(FEATURED_CATEGORIES_QUERY),
-    client.fetch(ALL_PRODUCTS_QUERY),
-  ]);
+const ShopPage = () => {
+  // Mock data for the shop page
+  const heroes = [
+    {
+       _id: "hero1",
+       seasonTitle: "System.24 // Fall_Winter",
+       mainHeading: "URBAN ARMOR",
+       subheading: "Weather-resistant shells for the modern operator.",
+       primaryButtonText: "View Specs",
+       primaryButtonLink: "#products",
+       secondaryButtonText: "Mission Brief",
+       secondaryButtonLink: "#",
+       heroImage: null // Will be handled in component
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-heroBlack text-white">
       {/* Hero Section */}
-      <ShopHero heroes={heroes} />
-
-      {/* Product Showcase Sections (Seasonal/Offers) */}
-      <ProductShowcaseRow showcases={showcases} />
-
-      {/* Promotional Grid Section */}
-      <PromotionalSection banners={promoBanners} />
-
-      {/* Featured Products with Tabs */}
-      <FeaturedProducts
-        newArrivals={newArrivals}
-        bestSelling={bestSelling}
-        topRated={topRated}
-      />
-
-      {/* Mid-Page Banners */}
-      <MidPageBanners banners={midPageBanners} />
+      <ShopHero heroes={heroes as any} />
 
       {/* All Products Section with Category Filter */}
-      <AllProductsSection categories={categories} initialProducts={allProducts} />
+      <AllProductsSection categories={MOCK_CATEGORIES as any} initialProducts={MOCK_PRODUCTS as any} />
 
-      {/* Featured Categories */}
-      <FeaturedCategories categories={categories} />
     </div>
   );
 };

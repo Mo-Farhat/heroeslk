@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
 
 interface Props {
   className?: string;
@@ -9,19 +8,14 @@ interface Props {
 
 const Logo = ({ className }: Props) => {
   return (
-    <Link href={"/"}>
-      <div className={cn("relative w-24 h-auto", className)}>
-        <Image
-          src="/images/nuzi-logo.png"
-          alt="Nuzii Logo"
-          width={96}
-          height={40}
-          className="w-full h-full object-contain"
-          priority
-        />
-      </div>
+    <Link href={"/"} className={cn("group relative z-10", className)}>
+      <h1 className="font-oswald text-3xl font-bold tracking-tighter uppercase italic -skew-x-6 text-white group-hover:text-heroCrimson transition-colors duration-300">
+        HEROES<span className="text-heroCrimson group-hover:text-white transition-colors duration-300">LK</span>
+        <span className="block h-1 w-full bg-heroCrimson mt-[-4px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+      </h1>
     </Link>
   );
 };
 
 export default Logo;
+

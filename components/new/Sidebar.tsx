@@ -7,12 +7,12 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { useOutsideClick } from "@/hooks";
 import SocialMedia from "./SocialMedia";
-import { FEATURED_CATEGORIES_QUERYResult } from "@/sanity.types";
+// import { FEATURED_CATEGORIES_QUERYResult } from "@/sanity.types";
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  categories: FEATURED_CATEGORIES_QUERYResult;
+  categories: any[]; // Using any for mock data compatibility
 }
 
 
@@ -39,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm xl:hidden"
+            className="fixed inset-0 bg-black/80 z-50 backdrop-blur-sm xl:hidden"
           />
 
           {/* Sidebar */}
@@ -49,28 +49,28 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
             exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             ref={sidebarRef}
-            className="fixed inset-y-0 left-0 z-50 w-[80%] max-w-sm bg-white shadow-2xl xl:hidden overflow-y-auto"
+            className="fixed inset-y-0 left-0 z-50 w-[85%] max-w-sm bg-heroBlack border-r border-gray-800 shadow-2xl xl:hidden overflow-y-auto text-white"
           >
             <div className="flex flex-col h-full">
               {/* Header */}
-              <div className="p-6 flex items-center justify-between border-b border-nuziiRoseGold/20">
-                <Logo className="w-24" />
+              <div className="p-6 flex items-center justify-between border-b border-gray-800">
+                <Logo className="w-24 text-white" />
                 <button
                   onClick={onClose}
-                  className="p-2 text-nuziiText hover:text-nuziiRoseGoldDark transition-colors rounded-full hover:bg-nuziiCream"
+                  className="p-2 text-white hover:text-heroCrimson transition-colors rounded-full hover:bg-gray-800"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
               {/* Navigation Links */}
-              <div className="flex-1 py-6 px-4 flex flex-col gap-2">
+              <div className="flex-1 py-6 px-4 flex flex-col gap-2 font-oswald uppercase tracking-wider">
                 <Link
                   onClick={onClose}
                   href="/"
-                  className={`px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 flex items-center justify-between ${pathname === "/"
-                    ? "bg-nuziiRoseGold/10 text-nuziiRoseGoldDark"
-                    : "text-nuziiText hover:bg-nuziiCream hover:text-nuziiRoseGoldDark"
+                  className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between ${pathname === "/"
+                    ? "bg-heroCrimson text-white"
+                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
                     }`}
                 >
                   Home
@@ -80,9 +80,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                 <div className="flex flex-col">
                   <button
                     onClick={() => setIsShopOpen(!isShopOpen)}
-                    className={`px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 flex items-center justify-between w-full ${pathname.startsWith("/shop") || pathname.startsWith("/category")
-                      ? "text-nuziiRoseGoldDark"
-                      : "text-nuziiText hover:bg-nuziiCream hover:text-nuziiRoseGoldDark"
+                    className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between w-full ${pathname.startsWith("/shop") || pathname.startsWith("/category")
+                      ? "text-heroCrimson"
+                      : "text-gray-400 hover:bg-gray-900 hover:text-white"
                       }`}
                   >
                     <span>Shop</span>
@@ -101,13 +101,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden pl-4"
                       >
-                        <div className="pl-4 border-l-2 border-nuziiRoseGold/20 flex flex-col gap-1 py-2">
+                        <div className="pl-4 border-l-2 border-gray-800 flex flex-col gap-1 py-2">
                           <Link
                             onClick={onClose}
                             href="/shop"
-                            className={`px-4 py-2 rounded-lg text-base transition-colors flex items-center gap-2 ${pathname === "/shop"
-                              ? "text-nuziiRoseGoldDark font-medium"
-                              : "text-nuziiTextLight hover:text-nuziiRoseGoldDark"
+                            className={`px-4 py-2 rounded-none text-base transition-colors flex items-center gap-2 ${pathname === "/shop"
+                              ? "text-heroCrimson font-bold"
+                              : "text-gray-500 hover:text-white"
                               }`}
                           >
                             All Products
@@ -117,9 +117,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                               onClick={onClose}
                               key={item?.title}
                               href={`/category/${item?.slug?.current}`}
-                              className={`px-4 py-2 rounded-lg text-base transition-colors flex items-center gap-2 capitalize ${pathname === `/category/${item?.slug?.current}`
-                                ? "text-nuziiRoseGoldDark font-medium"
-                                : "text-nuziiTextLight hover:text-nuziiRoseGoldDark"
+                              className={`px-4 py-2 rounded-none text-base transition-colors flex items-center gap-2 capitalize ${pathname === `/category/${item?.slug?.current}`
+                                ? "text-heroCrimson font-bold"
+                                : "text-gray-500 hover:text-white"
                                 }`}
                             >
                               {item?.title}
@@ -134,9 +134,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                 <Link
                   onClick={onClose}
                   href="/about"
-                  className={`px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 flex items-center justify-between ${pathname === "/about"
-                    ? "bg-nuziiRoseGold/10 text-nuziiRoseGoldDark"
-                    : "text-nuziiText hover:bg-nuziiCream hover:text-nuziiRoseGoldDark"
+                  className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between ${pathname === "/about"
+                    ? "bg-heroCrimson text-white"
+                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
                     }`}
                 >
                   About
@@ -145,9 +145,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                 <Link
                   onClick={onClose}
                   href="/contact"
-                  className={`px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 flex items-center justify-between ${pathname === "/contact"
-                    ? "bg-nuziiRoseGold/10 text-nuziiRoseGoldDark"
-                    : "text-nuziiText hover:bg-nuziiCream hover:text-nuziiRoseGoldDark"
+                  className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between ${pathname === "/contact"
+                    ? "bg-heroCrimson text-white"
+                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
                     }`}
                 >
                   Contact
@@ -156,9 +156,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                 <Link
                   onClick={onClose}
                   href="/orders"
-                  className={`px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 flex items-center justify-between ${pathname === "/orders"
-                    ? "bg-nuziiRoseGold/10 text-nuziiRoseGoldDark"
-                    : "text-nuziiText hover:bg-nuziiCream hover:text-nuziiRoseGoldDark"
+                  className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between ${pathname === "/orders"
+                    ? "bg-heroCrimson text-white"
+                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
                     }`}
                 >
                   My Orders
@@ -166,10 +166,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
               </div>
 
               {/* Footer */}
-              <div className="p-6 border-t border-nuziiRoseGold/20 bg-nuziiCream/30">
+              <div className="p-6 border-t border-gray-800 bg-gray-900/50">
                 <SocialMedia />
-                <p className="text-center text-xs text-nuziiTextLight mt-4">
-                  © {new Date().getFullYear()} NUZII. All rights reserved.
+                <p className="text-center text-xs text-gray-500 mt-4 tracking-widest uppercase">
+                  © {new Date().getFullYear()} HEROES LK.
                 </p>
               </div>
             </div>

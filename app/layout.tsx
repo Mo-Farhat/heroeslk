@@ -8,16 +8,18 @@ export const metadata: Metadata = {
   description: "Elevate Your Everyday Style with NUZII",
 };
 
-const poppins = localFont({
-  src: "./fonts/Poppins.woff2",
-  variable: "--font-poppins",
-  weight: "400",
-  preload: false,
+import { Oswald, Inter } from "next/font/google";
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
+  weight: ["400", "500", "600", "700"],
 });
-const raleway = localFont({
-  src: "./fonts/Raleway.woff2",
-  variable: "--font-raleway",
-  weight: "100 900",
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600"],
 });
 
 const RootLayout = ({
@@ -27,7 +29,7 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${raleway.variable} antialiased`}>
+      <body className={`${oswald.variable} ${inter.variable} antialiased bg-background text-foreground`}>
         {children}
       </body>
     </html>

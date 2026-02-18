@@ -9,7 +9,7 @@ import FooterCTA from "@/components/landing/FooterCTA";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white overflow-x-hidden">
+    <main className="min-h-screen bg-heroBlack overflow-x-hidden">
       <Hero />
       <FeaturedCollections />
       <BestSellers />

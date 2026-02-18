@@ -1,19 +1,24 @@
 "use client";
-import { FEATURED_CATEGORIES_QUERYResult } from "@/sanity.types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 
-const HeaderMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResult }) => {
+interface Category {
+  _id: string;
+  title: string;
+  slug: { current: string };
+}
+
+const HeaderMenu = ({ categories }: { categories: Category[] }) => {
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
 
   return (
-    <div className="hidden xl:inline-flex items-center gap-8 text-sm font-medium text-nuziiText tracking-wide">
+    <div className="hidden xl:inline-flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-white/70">
       <Link
         href={"/"}
-        className={`hover:text-nuziiRoseGoldDark transition-colors duration-300 ${isActive("/") ? "text-nuziiRoseGoldDark" : ""
+        className={`hover:text-heroCrimson transition-colors duration-200 ${isActive("/") ? "text-white" : ""
           }`}
       >
         Home
@@ -21,8 +26,8 @@ const HeaderMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResul
 
       <div className="relative group">
         <button
-          className={`flex items-center gap-1 hover:text-nuziiRoseGoldDark transition-colors duration-300 ${pathname.startsWith("/shop") || pathname.startsWith("/category")
-            ? "text-nuziiRoseGoldDark"
+          className={`flex items-center gap-1 hover:text-heroCrimson transition-colors duration-200 ${pathname.startsWith("/shop") || pathname.startsWith("/category")
+            ? "text-white"
             : ""
             }`}
         >
@@ -30,11 +35,11 @@ const HeaderMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResul
           <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
         </button>
 
-        <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
-          <div className="bg-white rounded-xl shadow-xl border border-nuziiBeige p-4 min-w-[200px] flex flex-col gap-2">
+        <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+          <div className="bg-heroBlack border border-gray-800 p-0 min-w-[200px] flex flex-col shadow-2xl">
             <Link
               href="/shop"
-              className="px-4 py-2 hover:bg-nuziiCream rounded-lg text-nuziiText hover:text-nuziiRoseGoldDark transition-colors"
+              className="px-6 py-3 hover:bg-white hover:text-black text-gray-300 transition-colors uppercase text-sm tracking-wider font-bold"
             >
               All Products
             </Link>
@@ -42,7 +47,7 @@ const HeaderMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResul
               <Link
                 key={category?._id}
                 href={`/category/${category?.slug?.current}`}
-                className="px-4 py-2 hover:bg-nuziiCream rounded-lg text-nuziiText hover:text-nuziiRoseGoldDark transition-colors capitalize"
+                className="px-6 py-3 hover:bg-white hover:text-black text-gray-300 transition-colors uppercase text-sm tracking-wider font-bold"
               >
                 {category?.title}
               </Link>
@@ -53,7 +58,7 @@ const HeaderMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResul
 
       <Link
         href={"/about"}
-        className={`hover:text-nuziiRoseGoldDark transition-colors duration-300 ${isActive("/about") ? "text-nuziiRoseGoldDark" : ""
+        className={`hover:text-heroCrimson transition-colors duration-200 ${isActive("/about") ? "text-white" : ""
           }`}
       >
         About
@@ -61,7 +66,7 @@ const HeaderMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResul
 
       <Link
         href={"/contact"}
-        className={`hover:text-nuziiRoseGoldDark transition-colors duration-300 ${isActive("/contact") ? "text-nuziiRoseGoldDark" : ""
+        className={`hover:text-heroCrimson transition-colors duration-200 ${isActive("/contact") ? "text-white" : ""
           }`}
       >
         Contact
@@ -71,3 +76,4 @@ const HeaderMenu = ({ categories }: { categories: FEATURED_CATEGORIES_QUERYResul
 };
 
 export default HeaderMenu;
+

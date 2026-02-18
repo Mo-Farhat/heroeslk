@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Container from "./Container";
-import { getAllCategories } from "@/sanity/helpers";
+import { MOCK_CATEGORIES } from "@/constants/mockData"; // Use Mock Data
 import HeaderMenu from "./new/HeaderMenu";
 import Logo from "./new/Logo";
 import { ListOrdered } from "lucide-react";
@@ -12,15 +12,12 @@ import UserMenu from "./new/UserMenu";
 
 const Header = async () => {
   // Orders fetching will need to be moved to a client component or handled differently with Firebase
-  // For now, we'll pass null and handle it in the client component if possible, 
-  // or we can't fetch orders server-side easily without cookies.
-  // Let's assume for now we just render the header and orders will be fetched client-side or we'll fix this later.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const orders: any[] = [];
-  const categories = await getAllCategories(3);
+  const categories = MOCK_CATEGORIES; // Use mock data directly
 
   return (
-    <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-nuziiRoseGold/20 py-4 transition-all duration-300">
+    <header className="bg-heroBlack sticky top-0 z-50 border-b border-gray-800 py-4 transition-all duration-300">
       <Container className="flex items-center justify-between gap-4">
         {/* Left: Navigation Menu */}
         <div className="hidden xl:block w-1/3">
@@ -34,19 +31,19 @@ const Header = async () => {
 
         {/* Center: Logo */}
         <div className="w-1/3 flex justify-center">
-          <Logo className="w-28 -mt-1.5 xl:mt-0" />
+          <Logo className="w-28 -mt-1.5 xl:mt-0 text-white" />
         </div>
 
         {/* Right: Utility Icons */}
-        <div className="w-1/3 flex items-center justify-end gap-6">
+        <div className="w-1/3 flex items-center justify-end gap-6 text-white">
           <SearchBar />
 
           <CartIcon />
 
-          <Link href={"/orders"} className="hidden md:block group relative text-nuziiText hover:text-nuziiRoseGoldDark transition-colors">
+          <Link href={"/orders"} className="hidden md:block group relative text-gray-300 hover:text-heroCrimson transition-colors">
             <ListOrdered className="w-5 h-5" />
             {orders && orders.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-nuziiRoseGold text-white h-4 w-4 rounded-full text-[10px] font-medium flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-heroCrimson text-white h-4 w-4 rounded-full text-[10px] font-medium flex items-center justify-center">
                 {orders.length}
               </span>
             )}
@@ -60,3 +57,4 @@ const Header = async () => {
 };
 
 export default Header;
+

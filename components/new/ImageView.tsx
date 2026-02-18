@@ -21,49 +21,74 @@ interface Props {
     crop?: SanityImageCrop;
     _type: "image";
     _key: string;
-  }>;
+  } | string>;
 }
 
 const ImageView = ({ images = [] }: Props) => {
   const [active, setActive] = useState(images[0]);
+
+  // Helper to get URL from either string or Sanity object
+  const getImageUrl = (img: any) => {
+      if (typeof img === 'string') return img;
+      return img ? urlFor(img).url() : '';
+  };
+  
+  const activeUrl = getImageUrl(active);
+
   return (
-    <div className="w-full md:w-1/2 space-y-2 md:space-y-4">
+    <div className="w-full space-y-4">
       <AnimatePresence mode="wait">
         <motion.div
-          key={active?._key}
+          key={activeUrl}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-h-[550px] min-h-[450px] border border-darkColor/10 rounded-md group overflow-hidden"
+          className="w-full relative aspect-[3/4] bg-gray-900 border border-gray-800 overflow-hidden"
         >
-          <Image
-            src={urlFor(active).url()}
-            alt="productImage"
-            width={700}
-            height={700}
-            priority
-            className="w-full h-96 max-h-[550px] min-h-[500px] object-contain group-hover:scale-110 hoverEffect rounded-md"
-          />
+          {activeUrl && (
+            <Image
+                src={activeUrl}
+                alt="productImage"
+                fill
+                priority
+                className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
+            />
+          )}
+
+           {/* Tech Overlays */}
+           <div className="absolute top-4 left-4 border-l-2 border-heroCrimson pl-2">
+                <p className="text-[10px] text-heroCrimson font-mono uppercase leading-none">IMG_SRC_01</p>
+           </div>
         </motion.div>
       </AnimatePresence>
-      <div className="grid grid-cols-6 gap-2 h-20 md:h-28">
-        {images.map((image) => (
-          <button
-            key={image._key}
-            onClick={() => setActive(image)}
-            className={`border rounded-md overflow-hidden hover:cursor-pointer ${active._key === image._key ? "ring-1 ring-darkColor" : ""
-              }`}
-          >
-            <Image
-              src={urlFor(image).url()}
-              alt={`Thumbnail ${image._key}`}
-              width={100}
-              height={100}
-              className="w-full h-auto object-contain"
-            />
-          </button>
-        ))}
+
+      <div className="grid grid-cols-5 gap-2">
+        {images.map((image, idx) => {
+          const imgUrl = getImageUrl(image);
+          const isActive = getImageUrl(active) === imgUrl;
+          
+          return (
+            <button
+                key={idx}
+                onClick={() => setActive(image)}
+                className={`relative aspect-square border overflow-hidden transition-all ${
+                    isActive 
+                    ? "border-heroCrimson opacity-100" 
+                    : "border-gray-800 opacity-60 hover:opacity-100 hover:border-gray-600"
+                }`}
+            >
+                {imgUrl && (
+                    <Image
+                    src={imgUrl}
+                    alt={`Thumbnail ${idx}`}
+                    fill
+                    className="object-cover"
+                    />
+                )}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

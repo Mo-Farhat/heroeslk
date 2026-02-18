@@ -1,15 +1,11 @@
-"use client";
-
 import { useState, useEffect } from "react";
-import { client } from "@/sanity/lib/client";
 import ProductCard from "@/components/ProductCard";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Loader2 } from "lucide-react";
-import { FEATURED_CATEGORIES_QUERYResult, ALL_PRODUCTS_QUERYResult } from "@/sanity.types";
 
 interface AllProductsSectionProps {
-    categories: FEATURED_CATEGORIES_QUERYResult;
-    initialProducts: ALL_PRODUCTS_QUERYResult;
+    categories: any[];
+    initialProducts: any[];
 }
 
 export default function AllProductsSection({
@@ -18,87 +14,73 @@ export default function AllProductsSection({
 }: AllProductsSectionProps) {
     const [selectedCategory, setSelectedCategory] = useState<string>("all");
     const [products, setProducts] = useState(initialProducts);
-    const [loading, setLoading] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-    const fetchProducts = async (categorySlug: string) => {
-        try {
-            setLoading(true);
-            let query = "";
-
-            if (categorySlug === "all") {
-                query = `*[_type == "product"] | order(name asc)`;
-            } else {
-                query = `*[_type == 'product' && references(*[_type == "category" && slug.current == $categorySlug]._id)] | order(name asc)`;
-            }
-
-            const data = await client.fetch(query, { categorySlug });
-            setProducts(data);
-        } catch (error) {
-            console.error("Error fetching products:", error);
-            setProducts([]);
-        } finally {
-            setLoading(false);
-        }
-    };
-
+    // Client-side filtering for mock data
     useEffect(() => {
-        if (selectedCategory !== "all") {
-            fetchProducts(selectedCategory);
-        } else {
+        if (selectedCategory === "all") {
             setProducts(initialProducts);
+        } else {
+            // Filter by category title or slug interaction
+            // Assuming mock products have a 'category' string field that matches
+            // Or we check if the category slug matches
+            const filtered = initialProducts.filter(p => 
+                p.category?.toLowerCase() === selectedCategory.toLowerCase() ||
+                p.categories?.some((c:any) => c.slug?.current === selectedCategory)
+            );
+            setProducts(filtered);
         }
     }, [selectedCategory, initialProducts]);
 
     const currentCategoryName =
         selectedCategory === "all"
-            ? "All Products"
+            ? "ALL PROTOCOLS"
             : categories.find((c) => c.slug?.current === selectedCategory)?.title ||
-            "All Products";
+            "ALL PROTOCOLS";
 
     return (
-        <section className="py-16 px-6 md:px-12 bg-nuziiBeige/30">
+        <section className="py-16 px-6 md:px-12 bg-heroBlack min-h-screen">
             <div className="container mx-auto max-w-7xl">
                 {/* Section Header with Filter */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 border-b border-gray-800 pb-6">
                     <div>
-                        <h2 className="text-4xl md:text-5xl font-light text-nuziiText mb-2">
-                            Browse Our Collection
+                        <h2 className="text-4xl md:text-5xl font-bold font-oswald text-white uppercase tracking-tighter mb-2">
+                            Deployment Gear
                         </h2>
-                        <p className="text-lg text-nuziiTextLight font-light">
-                            Explore our complete range of modest fashion
+                        <p className="text-gray-400 font-mono text-sm tracking-widest uppercase">
+                            Full inventory listing.
                         </p>
                     </div>
 
                     {/* Category Filter Dropdown */}
-                    <div className="relative">
+                    <div className="relative z-30">
                         <button
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                            className="flex items-center gap-3 px-6 py-3 bg-white border-2 border-nuziiRoseGold/30 rounded-full hover:border-nuziiRoseGold transition-all duration-300 min-w-[200px] justify-between"
+                            className="flex items-center gap-3 px-6 py-3 bg-black border border-gray-700 text-white hover:border-heroCrimson transition-all duration-300 min-w-[220px] justify-between font-mono text-sm uppercase"
                         >
-                            <span className="text-nuziiText font-light capitalize">
+                            <span className="truncate">
                                 {currentCategoryName}
                             </span>
                             <ChevronDown
-                                className={`w-5 h-5 text-nuziiRoseGold transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
+                                className={`w-4 h-4 text-heroCrimson transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
                                     }`}
                             />
                         </button>
 
                         {/* Dropdown Menu */}
                         {isDropdownOpen && (
-                            <div className="absolute top-full right-0 mt-2 w-full bg-white rounded-2xl shadow-xl border border-nuziiBeige p-2 z-50">
+                            <div className="absolute top-full right-0 mt-0 w-full bg-black border border-gray-700 border-t-0 shadow-xl z-50">
                                 <button
                                     onClick={() => {
                                         setSelectedCategory("all");
                                         setIsDropdownOpen(false);
                                     }}
-                                    className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${selectedCategory === "all"
-                                        ? "bg-nuziiRoseGold text-white"
-                                        : "hover:bg-nuziiCream text-nuziiText"
+                                    className={`w-full text-left px-4 py-3 text-sm font-mono uppercase transition-colors ${selectedCategory === "all"
+                                        ? "bg-heroCrimson text-white"
+                                        : "hover:bg-gray-900 text-gray-300"
                                         }`}
                                 >
-                                    All Products
+                                    ALL PROTOCOLS
                                 </button>
                                 {categories.filter(cat => cat.slug?.current).map((category) => (
                                     <button
@@ -109,9 +91,9 @@ export default function AllProductsSection({
                                                 setIsDropdownOpen(false);
                                             }
                                         }}
-                                        className={`w-full text-left px-4 py-3 rounded-lg transition-colors capitalize ${selectedCategory === category.slug?.current
-                                            ? "bg-nuziiRoseGold text-white"
-                                            : "hover:bg-nuziiCream text-nuziiText"
+                                        className={`w-full text-left px-4 py-3 text-sm font-mono uppercase transition-colors ${selectedCategory === category.slug?.current
+                                            ? "bg-heroCrimson text-white"
+                                            : "hover:bg-gray-900 text-gray-300"
                                             }`}
                                     >
                                         {category.title}
@@ -123,43 +105,34 @@ export default function AllProductsSection({
                 </div>
 
                 {/* Products Grid */}
-                {loading ? (
-                    <div className="flex items-center justify-center py-20">
-                        <div className="flex items-center gap-3 text-nuziiRoseGold">
-                            <Loader2 className="w-6 h-6 animate-spin" />
-                            <span className="text-lg font-light">Loading products...</span>
-                        </div>
-                    </div>
-                ) : products?.length > 0 ? (
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={selectedCategory}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-                        >
-                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                            {products.map((product: any) => (
-                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                <ProductCard key={product._id} product={product as any} />
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
-                ) : (
-                    <div className="text-center py-20">
-                        <p className="text-nuziiTextLight text-lg font-light">
-                            No products found in this category.
+                 <AnimatePresence mode="wait">
+                    <motion.div
+                        key={selectedCategory}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                    >
+                        {products.map((product: any) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))}
+                    </motion.div>
+                </AnimatePresence>
+
+                {products.length === 0 && (
+                     <div className="text-center py-20 border border-dashed border-gray-800">
+                        <p className="text-gray-500 font-mono uppercase">
+                            No units found in this protocol.
                         </p>
                     </div>
                 )}
-
+                
                 {/* Product Count */}
-                {!loading && products?.length > 0 && (
-                    <div className="text-center mt-8">
-                        <p className="text-nuziiTextLight font-light">
-                            Showing {products.length} product{products.length !== 1 ? "s" : ""}
+                {products.length > 0 && (
+                    <div className="text-center mt-12 pt-8 border-t border-gray-800">
+                        <p className="text-gray-600 font-mono text-xs uppercase tracking-widest">
+                            Displaying {products.length} Unit{products.length !== 1 ? "s" : ""}
                         </p>
                     </div>
                 )}

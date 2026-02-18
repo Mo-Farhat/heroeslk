@@ -1,17 +1,10 @@
-import AddToCartButton from "@/components/AddToCartButton";
-import Container from "@/components/Container";
 import ImageView from "@/components/new/ImageView";
-import PriceView from "@/components/PriceView";
-import ProductCharacteristics from "@/components/ProductCharacteristics";
-import { getProductBySlug } from "@/sanity/helpers";
-import { Heart } from "lucide-react";
+// import PriceView from "@/components/PriceView";
+import { MOCK_PRODUCTS } from "@/constants/mockData";
+import { Heart, Info, ShoppingBag, Truck, Share2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import React from "react";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { FiShare2 } from "react-icons/fi";
-
-import { TbTruckDelivery } from "react-icons/tb";
-import { PortableText } from "@portabletext/react";
+// import AddToCartButton from "@/components/AddToCartButton";
 
 const ProductPage = async ({
   params,
@@ -19,145 +12,99 @@ const ProductPage = async ({
   params: Promise<{ slug: string }>;
 }) => {
   const { slug } = await params;
-  const product = await getProductBySlug(slug);
+  
+  // Find product in mock data
+  const product = MOCK_PRODUCTS.find((p) => p.slug?.current === slug);
 
   if (!product) {
     return notFound();
   }
 
+  // Handle image prop standardization
+  // Mock products have 'image' string. ImageView expects array or we need to adapt it.
+  // We'll update ImageView to handle this.
+  const images = product.image ? [product.image] : []; 
+
   return (
-    <div>
-      <Container className="flex flex-col md:flex-row gap-10 py-10">
-        {product?.images && <ImageView images={product?.images} />}
-        <div className="w-full md:w-1/2 flex flex-col gap-5">
-          <div>
-            <p className="text-4xl font-bold mb-2">{product?.name}</p>
-            <PriceView
-              price={product?.price}
-              discount={product?.discount}
-              className="text-lg font-bold"
-            />
+    <div className="bg-heroBlack min-h-screen text-white pt-24 pb-20">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+          {/* Image Section */}
+          <div className="w-full lg:w-1/2">
+             <ImageView images={images as any} />
           </div>
-          {product?.stock && (
-            <p className="bg-green-100 w-24 text-center text-green-600 text-sm py-2.5 font-semibold rounded-lg">
-              In Stock
+
+          {/* Product Details */}
+          <div className="w-full lg:w-1/2 flex flex-col gap-6">
+            <div className="border-b border-gray-800 pb-6">
+                 <p className="text-heroCrimson font-mono text-xs uppercase tracking-widest mb-2">
+                    System.Inventory.Item // {product._id?.slice(-4) || '0000'}
+                 </p>
+                <h1 className="text-4xl md:text-6xl font-bold font-oswald uppercase tracking-wide leading-none mb-4">
+                    {product.title}
+                </h1>
+                <div className="flex items-end gap-4">
+                    <p className="text-3xl font-mono text-white">
+                        ${typeof product.price === 'number' ? product.price.toFixed(2) : product.price}
+                    </p>
+                    {product.rowPrice && (
+                         <p className="text-xl font-mono text-gray-500 line-through decoration-heroCrimson">
+                            ${product.rowPrice}
+                        </p>
+                    )}
+                </div>
+            </div>
+
+            {/* Status & Actions */}
+            <div className="flex gap-4 items-center">
+                 <div className="px-3 py-1 bg-green-500/10 border border-green-500/50 text-green-500 text-xs font-mono uppercase tracking-widest">
+                    Status: Available
+                 </div>
+                 <div className="px-3 py-1 bg-gray-800 border border-gray-700 text-gray-400 text-xs font-mono uppercase tracking-widest">
+                    Ships: 24h
+                 </div>
+            </div>
+            
+            <p className="text-gray-400 leading-relaxed font-sans max-w-xl border-l-2 border-gray-800 pl-4">
+                {product.description || "High-performance urban apparel designed for utility and resilience. Features advanced technical fabrics and ergonomic construction for maximum mobility in the field."}
             </p>
-          )}
 
-          {product?.description && (
-            <div className="text-sm text-gray-600 tracking-wide prose prose-sm max-w-none">
-              <PortableText
-                value={product.description}
-                components={{
-                  block: {
-                    normal: ({ children }) => (
-                      <p className="mb-3 leading-relaxed">{children}</p>
-                    ),
-                    h1: ({ children }) => (
-                      <h1 className="text-2xl font-bold mb-3 text-gray-800">
-                        {children}
-                      </h1>
-                    ),
-                    h2: ({ children }) => (
-                      <h2 className="text-xl font-bold mb-2 text-gray-800">
-                        {children}
-                      </h2>
-                    ),
-                    h3: ({ children }) => (
-                      <h3 className="text-lg font-semibold mb-2 text-gray-800">
-                        {children}
-                      </h3>
-                    ),
-                    h4: ({ children }) => (
-                      <h4 className="text-base font-semibold mb-2 text-gray-800">
-                        {children}
-                      </h4>
-                    ),
-                    blockquote: ({ children }) => (
-                      <blockquote className="border-l-4 border-gray-300 pl-4 italic my-3">
-                        {children}
-                      </blockquote>
-                    ),
-                  },
-                  list: {
-                    bullet: ({ children }) => (
-                      <ul className="list-disc list-inside mb-3 space-y-1">
-                        {children}
-                      </ul>
-                    ),
-                  },
-                  listItem: {
-                    bullet: ({ children }) => (
-                      <li className="ml-2">{children}</li>
-                    ),
-                  },
-                  marks: {
-                    strong: ({ children }) => (
-                      <strong className="font-bold text-gray-800">
-                        {children}
-                      </strong>
-                    ),
-                    em: ({ children }) => <em className="italic">{children}</em>,
-                    link: ({ children, value }) => (
-                      <a
-                        href={value?.href}
-                        className="text-blue-600 hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {children}
-                      </a>
-                    ),
-                  },
-                }}
-              />
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                <button className="flex-1 bg-heroCrimson hover:bg-red-700 text-white py-4 font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2 group">
+                    <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    Acquire Asset
+                </button>
+                <button className="px-6 py-4 border border-gray-600 hover:border-white text-white transition-colors flex items-center justify-center hover:bg-white hover:text-black">
+                    <Heart className="w-5 h-5" />
+                </button>
             </div>
-          )}
-          <div className="flex items-center gap-2.5 lg:gap-5">
-            <AddToCartButton
-              product={product}
-              className="bg-darkColor/80 text-white hover:bg-darkColor hoverEffect"
-            />
-            <button className="border-2 border-darkColor/30 text-darkColor/60 px-2.5 py-1.5 rounded-md hover:text-darkColor hover:border-darkColor hoverEffect">
-              <Heart className="w-5 h-5" />
-            </button>
-          </div>
-          <ProductCharacteristics product={product} />
-          <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-b-gray-200 py-5 -mt-2">
 
-            <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
-              <FaRegQuestionCircle className="text-lg" />
-              <p>Ask a question</p>
+            {/* Toggles */}
+            <div className="mt-8 space-y-0 border-t border-gray-800">
+                 <div className="flex items-center justify-between py-4 border-b border-gray-800 text-sm font-mono uppercase text-gray-400 cursor-pointer hover:text-white transition-colors">
+                      <span className="flex items-center gap-3">
+                          <Info className="w-4 h-4" /> Technical Specs
+                      </span>
+                      <span>+</span>
+                 </div>
+                  <div className="flex items-center justify-between py-4 border-b border-gray-800 text-sm font-mono uppercase text-gray-400 cursor-pointer hover:text-white transition-colors">
+                      <span className="flex items-center gap-3">
+                          <Truck className="w-4 h-4" /> Logistics Network
+                      </span>
+                      <span>+</span>
+                 </div>
+                  <div className="flex items-center justify-between py-4 border-b border-gray-800 text-sm font-mono uppercase text-gray-400 cursor-pointer hover:text-white transition-colors">
+                      <span className="flex items-center gap-3">
+                          <Share2 className="w-4 h-4" /> Signal Broadcast
+                      </span>
+                      <span>+</span>
+                 </div>
             </div>
-            <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
-              <TbTruckDelivery className="text-lg" />
-              <p>Delivery & Return</p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
-              <FiShare2 className="text-lg" />
-              <p>Share</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-5">
-            <div className="border border-darkBlue/20 text-center p-3 hover:border-darkBlue hoverEffect rounded-md">
-              <p className="text-base font-semibold text-black">
-                Free Shipping
-              </p>
-              <p className="text-sm text-gray-500">
-                Free shipping over order $120
-              </p>
-            </div>
-            <div className="border border-darkBlue/20 text-center p-3 hover:border-darkBlue hoverEffect rounded-md">
-              <p className="text-base font-semibold text-black">
-                Flexible Payment
-              </p>
-              <p className="text-sm text-gray-500">
-                Pay with Multiple Credit Cards
-              </p>
-            </div>
+
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };
