@@ -2,29 +2,29 @@ import { ShieldCheck, Activity, Layers, Zap, Crosshair } from "lucide-react";
 
 const benefits = [
     {
-        icon: ShieldCheck,
-        title: "DURABILITY",
-        description: "High-tenacity fabrics engineered for maximum abrasion resistance."
+        icon: Activity,
+        title: "COMFORT FIRST",
+        description: "Soft breathable fabrics designed for all-day daily comfort."
     },
     {
-        icon: Activity,
-        title: "PERFORMANCE",
-        description: "Adaptive materials that respond to movement and environment."
+        icon: ShieldCheck,
+        title: "QUALITY OVER QUANTITY",
+        description: "Durable stitching and premium materials for long-lasting wear."
     },
     {
         icon: Layers,
-        title: "MODULAR SYSTEM",
-        description: "Components designed to integrate for versatile loadouts."
+        title: "TIMELESS STYLE",
+        description: "Clean silhouettes and easy-to-style neutral tones."
     },
     {
         icon: Zap,
-        title: "RAPID DEPLOYMENT",
-        description: "Streamlined logistics for direct-to-consumer efficiency."
+        title: "CONFIDENCE",
+        description: "Pieces that fit right and speak without trying too hard."
     },
     {
         icon: Crosshair,
-        title: "PRECISION FIT",
-        description: "Ergonomic cuts utilizing 3D body mapping data."
+        title: "MODERN FIT",
+        description: "Relaxed yet structured fit for a sharp, versatile look."
     }
 ];
 

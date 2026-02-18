@@ -8,10 +8,10 @@ export default function FeaturedCollections() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-4xl md:text-5xl font-bold font-oswald text-white uppercase tracking-tighter">
-                        Featured Protocol
+                        Latest Drop
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto uppercase tracking-widest text-sm">
-                        Curated selections for the modern operator.
+                        Fresh essentials and standout fits curated for daily rotation. Limited quantities, maximum presence.
                     </p>
                 </div>
 

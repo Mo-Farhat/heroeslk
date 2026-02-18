@@ -10,13 +10,27 @@ import { motion } from "framer-motion";
 const CAROUSEL_IMAGES = [
     {
         id: 1,
-        src: "/images/landing/bg-carousel.png", // Keep existing path for now, will need actual assets later
-        alt: "Urban Performance",
+        src: "/hero-bg-1.jpeg",
+        headline: "WEAR WHAT FEELS LIKE YOU",
+        subheadline: "Modern streetwear designed for everyday life — clean silhouettes, bold presence, effortless comfort.",
+        cta1: "Shop Now",
+        cta2: "Browse Collection"
     },
     {
         id: 2,
-        src: "/images/landing/bg-carousel-2.png",
-        alt: "Technical Gear",
+        src: "/hero-bg-2.jpeg",
+        headline: "STYLE THAT MOVES WITH YOU",
+        subheadline: "Confidence, on repeat. Stay comfortable without compromising on your aesthetic.",
+        cta1: "View Drop",
+        cta2: "See What's New"
+    },
+    {
+        id: 3,
+        src: "/hero-bg-1.jpeg",
+        headline: "BUILT FOR EVERYDAY ICONS",
+        subheadline: "Own your look. Effortless pieces curated for your daily rotation.",
+        cta1: "Explore Styles",
+        cta2: "Learn More"
     },
 ];
 
@@ -40,48 +54,52 @@ export default function Hero() {
         };
     }, [emblaApi, onSelect]);
 
+    const activeImage = CAROUSEL_IMAGES[selectedIndex];
+
     return (
         <section className="relative w-full h-[85vh] overflow-hidden bg-heroBlack">
             {/* Carousel Background */}
-            <div className="absolute inset-0 z-0 opacity-40" ref={emblaRef}>
+            <div className="absolute inset-0 z-0 opacity-50" ref={emblaRef}>
                 <div className="flex h-full">
                     {CAROUSEL_IMAGES.map((image, index) => (
                         <div key={image.id} className="relative flex-[0_0_100%] h-full min-w-0">
-                            {/* Placeholder for now until assets are generated/placed */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black" /> 
-                            {/* <Image
+                            <Image
                                 src={image.src}
-                                alt={image.alt}
+                                alt={image.headline}
                                 fill
-                                className="object-cover grayscale"
+                                className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                                 priority={index === 0}
-                            /> */}
+                            />
+                            <div className="absolute inset-0 bg-black/40" />
                         </div>
                     ))}
                 </div>
             </div>
 
             {/* Grid Overlay Texture */}
-            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+            <div className="absolute inset-0 z-20 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
 
             {/* Content Overlay */}
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
+            <div className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4">
                 <motion.div
+                    key={selectedIndex}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    transition={{ duration: 0.8 }}
                     className="flex flex-col items-center gap-8 max-w-5xl border border-white/10 bg-black/40 backdrop-blur-sm p-12"
                 >
                     {/* Headline */}
-                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter text-white leading-none uppercase font-oswald italic">
-                        ENGINEERED <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">FOR THE CITY</span>
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-none uppercase font-oswald italic">
+                        {activeImage.headline.split(' ').map((word, i) => (
+                          <span key={i} className={i === activeImage.headline.split(' ').length - 1 ? "text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500" : ""}>
+                            {word}{' '}
+                          </span>
+                        ))}
                     </h1>
 
                     {/* Subheadline */}
-                    <p className="text-lg md:text-xl text-gray-300 font-medium max-w-xl tracking-wide uppercase">
-                        Advanced technical apparel for the urban operator. <br/>
-                        Precision. Utility. Style.
+                    <p className="text-lg md:text-xl text-gray-300 font-medium max-w-2xl tracking-wide uppercase">
+                        {activeImage.subheadline}
                     </p>
 
                     {/* CTA Buttons */}
@@ -90,20 +108,20 @@ export default function Hero() {
                             href="/shop"
                             className="inline-flex items-center justify-center gap-2 bg-heroCrimson hover:bg-red-700 text-white px-10 py-4 font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105 min-w-[200px] border border-transparent"
                         >
-                            Shop Collection
+                            {activeImage.cta1}
                         </Link>
                         <Link
                             href="/shop"
                             className="inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white hover:text-black text-white px-10 py-4 font-bold uppercase tracking-widest transition-all duration-300 border border-white min-w-[200px]"
                         >
-                            View Lookbook
+                            {activeImage.cta2}
                         </Link>
                     </div>
                 </motion.div>
             </div>
 
             {/* Carousel Indicators */}
-            <div className="absolute bottom-10 left-10 z-20 flex gap-2">
+            <div className="absolute bottom-10 left-10 z-40 flex gap-2">
                 {CAROUSEL_IMAGES.map((_, index) => (
                     <button
                         key={index}
@@ -118,10 +136,9 @@ export default function Hero() {
                 ))}
             </div>
             
-            {/* Decorative Elements */}
-            <div className="absolute bottom-10 right-10 text-xs font-mono text-gray-500 hidden md:block">
-                SYSTEMStatus: ONLINE <br/>
-                LOC: 6.9271° N, 79.8612° E
+            {/* Tagline */}
+            <div className="absolute bottom-10 right-10 text-xs font-mono text-gray-400 hidden md:block uppercase tracking-widest">
+                Wear it your way. Every day.
             </div>
         </section>
     );

@@ -12,10 +12,10 @@ export default function NewArrivals() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center text-center mb-16 space-y-4">
                     <h2 className="text-4xl md:text-5xl font-bold font-oswald text-white uppercase tracking-tighter">
-                        New Arrivals <span className="text-gray-700">//</span> Latest Drop
+                        New Arrivals <span className="text-gray-700">//</span> View Drop
                     </h2>
                     <p className="text-gray-400 font-mono text-sm tracking-widest uppercase">
-                        Technical fabrics. Modular designs. Future ready.
+                        Clean silhouettes. Bold presence. Effortless comfort.
                     </p>
                 </div>
 

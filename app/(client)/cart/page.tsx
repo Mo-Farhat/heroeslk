@@ -83,7 +83,7 @@ const CartPage = () => {
             <>
               <div className="flex items-center gap-4 py-8 border-b border-gray-800 mb-8">
                 <ShoppingBag className="h-6 w-6 text-heroCrimson" />
-                <h1 className="text-3xl font-bold font-oswald uppercase track-wide">Mission Loadout</h1>
+                <h1 className="text-3xl font-bold font-oswald uppercase track-wide">Your Bag</h1>
               </div>
               
               <div className="grid lg:grid-cols-3 gap-8">
@@ -106,9 +106,6 @@ const CartPage = () => {
                                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                                 />
                             )}
-                             <div className="absolute top-1 left-1 bg-heroCrimson text-white text-[10px] px-1 font-mono uppercase">
-                                Item.{product?._id?.slice(-3)}
-                             </div>
                           </div>
 
                           {/* Details */}
@@ -118,10 +115,9 @@ const CartPage = () => {
                                       {product?.name}
                                   </h2>
                                   <p className="text-sm text-gray-400 font-mono mb-2">
-                                      {product?.variantInfo || "Standard Issue"}
+                                      {product?.variantInfo || "Standard Fit"}
                                   </p>
                                   <div className="flex gap-4 text-xs font-mono uppercase text-gray-500">
-                                      <span>Status: <span className="text-green-500">Active</span></span>
                                       <span>Variant: {product?.variant || "N/A"}</span>
                                   </div>
                               </div>
@@ -131,7 +127,7 @@ const CartPage = () => {
                                       <Trash className="w-4 h-4" /> Remove
                                   </button>
                                   <button className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 hover:text-white transition-colors">
-                                      <Heart className="w-4 h-4" /> Save Info
+                                      <Heart className="w-4 h-4" /> Save For Later
                                   </button>
                               </div>
                           </div>
@@ -153,9 +149,9 @@ const CartPage = () => {
                     <div className="flex justify-start pt-4">
                         <Button
                         onClick={handleResetCart}
-                        className="bg-transparent border border-red-900/50 text-red-500 hover:bg-red-900/20 hover:text-red-400 uppercase font-bold tracking-widest text-xs py-6 px-8 rounded-none"
+                        className="bg-transparent border border-gray-800 text-gray-500 hover:bg-white hover:text-black uppercase font-bold tracking-widest text-xs py-6 px-8 rounded-none"
                         >
-                        <AlertTriangle className="w-4 h-4 mr-2" /> Purge System
+                        Clear Cart
                         </Button>
                     </div>
                 </div>
@@ -166,29 +162,29 @@ const CartPage = () => {
                 <div className="lg:col-span-1">
                   <div className="bg-gray-900 border border-gray-800 p-8 sticky top-24">
                     <h2 className="text-xl font-bold font-oswald uppercase mb-6 border-b border-gray-800 pb-2">
-                      Request Summary
+                      Order Summary
                     </h2>
                     <div className="space-y-4 font-mono text-sm text-gray-400">
                       <div className="flex justify-between">
-                        <span className="uppercase">Net Value</span>
+                        <span className="uppercase">Subtotal</span>
                         <PriceFormatter amount={getSubTotalPrice()} className="text-white" />
                       </div>
                       <div className="flex justify-between">
-                        <span className="uppercase">Rebate</span>
+                        <span className="uppercase">Savings</span>
                         <PriceFormatter
                           amount={getSubTotalPrice() - getTotalPrice()}
                           className="text-heroCrimson"
                         />
                       </div>
                       <div className="flex justify-between">
-                        <span className="uppercase">Logistics</span>
-                        <span className="text-green-500">FREE</span>
+                        <span className="uppercase">Shipping</span>
+                        <span className="text-green-500 font-bold tracking-widest">FREE</span>
                       </div>
 
                       <div className="h-px bg-gray-800 my-4" />
                       
                       <div className="flex justify-between font-bold text-lg text-white font-oswald uppercase tracking-wide">
-                        <span>Total Auth</span>
+                        <span>Total Amount</span>
                         <PriceFormatter
                           amount={useCartStore?.getState().getTotalPrice()}
                           className="font-bold"
@@ -201,11 +197,11 @@ const CartPage = () => {
                         className="w-full bg-heroCrimson hover:bg-red-700 text-white font-bold uppercase tracking-widest py-6 rounded-none mt-6 transition-all duration-300"
                         size="lg"
                       >
-                        {loading ? "INITIALIZING..." : "INITIATE TRANSFER"}
+                        {loading ? "PROCESSING..." : "Secure Checkout"}
                       </Button>
                       
-                       <div className="flex items-center justify-center gap-2 mt-4 text-xs text-gray-600 uppercase font-mono">
-                           <ShieldCheck className="w-3 h-3" /> Encrypted Transaction
+                       <div className="flex items-center justify-center gap-2 mt-4 text-[10px] text-gray-600 uppercase font-mono tracking-tighter">
+                           <ShieldCheck className="w-3 h-3" /> Secure checkout. Fast shipping. Easy returns.
                        </div>
                     </div>
                   </div>

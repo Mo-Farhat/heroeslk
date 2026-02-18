@@ -13,10 +13,10 @@ export default function BestSellers() {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 border-b border-gray-800 pb-6">
                     <div className="space-y-2">
                         <h2 className="text-3xl md:text-5xl font-bold text-white uppercase font-oswald tracking-tight">
-                            Best Sellers <span className="text-heroCrimson">//</span> Field Tested
+                            Best Sellers <span className="text-heroCrimson">//</span> Daily Essentials
                         </h2>
                         <p className="text-gray-400 font-mono text-sm tracking-wide">
-                            HIGH DEMAND UNITS. PROVEN PERFORMANCE.
+                            OUR MOST-WANTED PIECES, CURATED FOR YOUR ROTATION.
                         </p>
                     </div>
                     <Link

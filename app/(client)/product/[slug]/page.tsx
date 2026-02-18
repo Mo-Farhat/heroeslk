@@ -38,7 +38,7 @@ const ProductPage = async ({
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             <div className="border-b border-gray-800 pb-6">
                  <p className="text-heroCrimson font-mono text-xs uppercase tracking-widest mb-2">
-                    System.Inventory.Item // {product._id?.slice(-4) || '0000'}
+                    RE_ID: {product._id?.slice(-4) || '0000'} // HEROESLK
                  </p>
                 <h1 className="text-4xl md:text-6xl font-bold font-oswald uppercase tracking-wide leading-none mb-4">
                     {product.title}
@@ -57,50 +57,72 @@ const ProductPage = async ({
 
             {/* Status & Actions */}
             <div className="flex gap-4 items-center">
-                 <div className="px-3 py-1 bg-green-500/10 border border-green-500/50 text-green-500 text-xs font-mono uppercase tracking-widest">
-                    Status: Available
+                 <div className="px-3 py-1 bg-white/10 border border-white/20 text-white text-xs font-mono uppercase tracking-widest">
+                    New Arrival
                  </div>
                  <div className="px-3 py-1 bg-gray-800 border border-gray-700 text-gray-400 text-xs font-mono uppercase tracking-widest">
-                    Ships: 24h
+                    Best Seller
                  </div>
             </div>
             
-            <p className="text-gray-400 leading-relaxed font-sans max-w-xl border-l-2 border-gray-800 pl-4">
-                {product.description || "High-performance urban apparel designed for utility and resilience. Features advanced technical fabrics and ergonomic construction for maximum mobility in the field."}
-            </p>
+            <div className="space-y-4">
+                <p className="text-gray-300 leading-relaxed font-sans max-w-xl border-l border-heroCrimson pl-4">
+                    {product.description}
+                </p>
+                
+                {/* Benefit Points */}
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-400 font-mono uppercase tracking-tight pl-4">
+                    <li className="flex items-center gap-2">/ Soft breathable fabric</li>
+                    <li className="flex items-center gap-2">/ Durable stitching</li>
+                    <li className="flex items-center gap-2">/ Easy-to-style tones</li>
+                    <li className="flex items-center gap-2">/ Modern structured fit</li>
+                </ul>
+            </div>
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
                 <button className="flex-1 bg-heroCrimson hover:bg-red-700 text-white py-4 font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2 group">
                     <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                    Acquire Asset
+                    Shop Now
                 </button>
                 <button className="px-6 py-4 border border-gray-600 hover:border-white text-white transition-colors flex items-center justify-center hover:bg-white hover:text-black">
                     <Heart className="w-5 h-5" />
                 </button>
             </div>
 
+            {/* Size & Fit Reassurance */}
+            <div className="bg-gray-900/50 p-4 border border-gray-800">
+                <p className="text-xs text-gray-400 leading-relaxed uppercase tracking-wider">
+                    <span className="text-white font-bold">Fit Guide:</span> True-to-size with a relaxed modern fit. Prefer a looser vibe? Size up. Want a sharper look? Stay true to size.
+                </p>
+            </div>
+
             {/* Toggles */}
-            <div className="mt-8 space-y-0 border-t border-gray-800">
+            <div className="mt-4 space-y-0 border-t border-gray-800">
                  <div className="flex items-center justify-between py-4 border-b border-gray-800 text-sm font-mono uppercase text-gray-400 cursor-pointer hover:text-white transition-colors">
                       <span className="flex items-center gap-3">
-                          <Info className="w-4 h-4" /> Technical Specs
+                          <Info className="w-4 h-4" /> Product Details
                       </span>
                       <span>+</span>
                  </div>
                   <div className="flex items-center justify-between py-4 border-b border-gray-800 text-sm font-mono uppercase text-gray-400 cursor-pointer hover:text-white transition-colors">
                       <span className="flex items-center gap-3">
-                          <Truck className="w-4 h-4" /> Logistics Network
+                          <Truck className="w-4 h-4" /> Shipping & Returns
                       </span>
                       <span>+</span>
                  </div>
                   <div className="flex items-center justify-between py-4 border-b border-gray-800 text-sm font-mono uppercase text-gray-400 cursor-pointer hover:text-white transition-colors">
                       <span className="flex items-center gap-3">
-                          <Share2 className="w-4 h-4" /> Signal Broadcast
+                          <Share2 className="w-4 h-4" /> Share Style
                       </span>
                       <span>+</span>
                  </div>
             </div>
+
+            {/* Shipping Snippet */}
+            <p className="text-[10px] text-gray-500 uppercase tracking-widest text-center mt-2">
+                Fast dispatch within 48 hours. Easy exchanges within 14 days.
+            </p>
 
           </div>
         </div>

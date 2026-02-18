@@ -2,19 +2,19 @@ import { Terminal, Star } from "lucide-react";
 
 const testimonials = [
     {
-        quote: "The quality is amazing, heavy structure but breathable. Perfect for the city.",
+        quote: "Fits perfectly without overdoing it.",
         author: "SARAH M.",
-        role: "STATUS: VERIFIED"
+        role: "EVERYDAY ICON"
     },
     {
-        quote: "Finally found techwear that fits right. Precision cuts are on point.",
+        quote: "Simple, clean, and always gets compliments.",
         author: "AMINA K.",
-        role: "STATUS: VERIFIED"
+        role: "COLLECTION 01"
     },
     {
-        quote: "Fabric durability is unmatched. This is now my daily driver.",
+        quote: "My go-to brand for everyday wear.",
         author: "LAYLA R.",
-        role: "STATUS: VERIFIED"
+        role: "LUYAL USER"
     }
 ];
 

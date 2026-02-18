@@ -18,15 +18,15 @@ const Footer = async () => {
           <div className="space-y-6">
             <Logo className="w-24 mb-2 text-white" />
             <p className="text-gray-400 text-sm leading-relaxed font-sans">
-              Born from urban movement and performance culture.
+              HEROESLK is about everyday confidence. Pieces that fit right, last long, and speak without trying too hard.
               <br />
-              <span className="font-bold text-white uppercase tracking-wider">Precision. Resilience. Intent.</span>
+              <span className="font-bold text-white uppercase tracking-wider">Style that moves with you.</span>
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 bg-heroCrimson hover:bg-red-700 text-white px-6 py-3 rounded-none font-bold uppercase tracking-wider transition-all duration-300 hover:shadow-[0_0_15px_rgba(220,38,38,0.5)] group"
+              className="inline-flex items-center gap-2 bg-heroCrimson hover:bg-red-700 text-white px-6 py-3 rounded-none font-bold uppercase tracking-wider transition-all duration-300 group"
             >
-              Enter The Collection
+              Explore Collection
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -50,7 +50,7 @@ const Footer = async () => {
             </ul>
           </div>
 
-          {/* Column 3: Customer Care */}
+          {/* Column 3: Support */}
           <div>
             <h3 className="font-bold text-white uppercase tracking-wider text-lg mb-6">Support</h3>
             <ul className="space-y-3">
@@ -81,13 +81,13 @@ const Footer = async () => {
             </div>
 
             <div>
-              <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                Early access to drops. No spam. Just signals.
+              <p className="text-gray-400 text-sm mb-4 leading-relaxed uppercase tracking-tighter">
+                Stay Connected. <br/> Early access to new drops & releases.
               </p>
               <form className="space-y-3">
                 <input
                   type="email"
-                  placeholder="ENTER EMAIL"
+                  placeholder="EMAIL ADDRESS"
                   required
                   className="w-full px-4 py-3 border-b border-gray-600 bg-transparent text-white placeholder:text-gray-600 focus:outline-none focus:border-heroCrimson transition-all rounded-none"
                 />
@@ -95,7 +95,7 @@ const Footer = async () => {
                   type="submit"
                   className="w-full bg-white hover:bg-gray-200 text-black px-4 py-3 rounded-none font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group"
                 >
-                  Join The List
+                  Join Now
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
@@ -108,7 +108,7 @@ const Footer = async () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500 uppercase tracking-widest">
             <p>© {new Date().getFullYear()} HEROES LK. ALL RIGHTS RESERVED.</p>
             <p className="font-medium">
-              SYSTEM STATUS: OPERATIONAL
+              Wear it your way. Every day.
             </p>
           </div>
         </div>

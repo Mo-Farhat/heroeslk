@@ -8,10 +8,10 @@ export default function InstagramFeed() {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 border-b border-gray-800 pb-6">
                     <div>
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 font-oswald uppercase tracking-tight">
-                            Visual Intel
+                            Everyday Icons
                         </h2>
                         <p className="text-gray-400 font-mono text-sm tracking-widest uppercase">
-                            Global operatives. Tag #HEROESLK to initiate.
+                            Wear it your way. Every day. Tag #HEROESLK.
                         </p>
                     </div>
                     <Link

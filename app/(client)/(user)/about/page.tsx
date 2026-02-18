@@ -1,252 +1,209 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, Sparkles, ShieldCheck, Palette, Camera, ShoppingBag, Crown } from "lucide-react";
+import { Sparkles, ShieldCheck, Palette, Camera, ShoppingBag, Zap, Target, Layers } from "lucide-react";
+import Container from "@/components/Container";
 
 const differentiators = [
   {
     icon: Sparkles,
-    title: "Quality fabrics",
-    description: "Soft, premium materials selected for comfort and durability."
+    title: "PREMIUM FABRICS",
+    description: "High-density textiles selected for heavy-duty daily rotation."
   },
   {
-    icon: Palette,
-    title: "Soft neutral tones",
-    description: "Timeless colors that complement any wardrobe."
+    icon: Layers,
+    title: "MODERN SILHOUETTES",
+    description: "Wide fits and clean drops designed for urban movement."
   },
   {
     icon: ShieldCheck,
-    title: "Comfortable modest fits",
-    description: "Thoughtfully designed for coverage and confidence."
+    title: "DURABLE BUILD",
+    description: "Reinforce stitching and quality hardware that lasts."
   },
   {
-    icon: Heart,
-    title: "Fair pricing",
-    description: "Luxury feel without the luxury markup."
+    icon: Target,
+    title: "FAIR VALUE",
+    description: "Exceptional quality without the inflated luxury markup."
   },
   {
     icon: Camera,
-    title: "Reliable product photos",
-    description: "What you see is what you get—no surprises."
+    title: "AUTHENTIC VISUALS",
+    description: "Raw, unedited product clarity. What you see is what you get."
   },
   {
-    icon: ShoppingBag,
-    title: "Smooth experience",
-    description: "Easy browsing, secure checkout, hassle-free returns."
+    icon: Zap,
+    title: "SEAMLESS FLOW",
+    description: "Express shipping and effortless checkout for the modern pace."
   }
 ];
 
 const values = [
-  { title: "Honesty", description: "Transparent pricing and authentic products" },
-  { title: "Quality", description: "Premium fabrics that last" },
-  { title: "Simplicity", description: "Effortless style, easy shopping" },
-  { title: "Timeless style", description: "Fashion that transcends trends" }
+  { title: "INTENT", description: "Every silhouette is designed with a specific purpose in mind." },
+  { title: "PRESENCE", description: "Pieces that speak without trying too hard. Bold yet understated." },
+  { title: "COMFORT", description: "Premium materials that feel right from the first wear." },
+  { title: "VERSATILITY", description: "Fashion that moves with you from day to night, street to gym." }
 ];
 
 const AboutPage = () => {
   return (
-    <div className="w-full">
-      {/* Section 1: Our Story - Hero */}
-      <section className="w-full bg-[#c8a19c]">
-        <div className="grid md:grid-cols-2 min-h-[600px]">
-          {/* Left Column - Image */}
-          <div className="relative h-[400px] md:h-full w-full">
-            <Image
-              src="/images/about-left.png"
-              alt="Nuzii Woman"
-              fill
-              className="object-cover object-top"
-            />
-          </div>
-
-          {/* Right Column - Content */}
-          <div className="flex flex-col justify-center p-8 md:p-16 lg:p-24 text-white space-y-8">
-            <h1 className="text-3xl md:text-5xl font-light text-white">
-              Made with Love, NUZI
-            </h1>
-
-            <blockquote className="text-lg md:text-xl font-light italic text-white/90 border-l-2 border-white pl-4">
-              “We believe modest fashion is more than style — it is confidence, comfort, and self-expression.” — NUZI
-            </blockquote>
-
-            <div className="space-y-4 text-white/90 font-light leading-relaxed">
-              <p>
-                At NUZI, we pour intention into every piece we create.
-                Our mission is to deliver quality, elegance, and modesty in every shawl—crafted to reflect our brand’s timeless values.
-              </p>
-              <p>
-                We design with the modern woman in mind, offering pieces that uplift confidence and bring effortless beauty to your everyday moments.
-                Because at NUZI, you deserve to feel graceful, empowered, and uniquely you.
-              </p>
-            </div>
-
-            {/* Icons Section */}
-            <div className="pt-8 border-t border-white/20">
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="flex flex-col items-center gap-3 group">
-                  <div className="p-3 rounded-full border border-white/30 group-hover:border-white transition-colors">
-                    <Crown className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-xs md:text-sm font-light tracking-wide text-white">Be Elegant</span>
-                </div>
-                <div className="flex flex-col items-center gap-3 group">
-                  <div className="p-3 rounded-full border border-white/30 group-hover:border-white transition-colors">
-                    <Sparkles className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-xs md:text-sm font-light tracking-wide text-white">Stay Modest</span>
-                </div>
-                <div className="flex flex-col items-center gap-3 group">
-                  <div className="p-3 rounded-full border border-white/30 group-hover:border-white transition-colors">
-                    <Heart className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-xs md:text-sm font-light tracking-wide text-white">Feel NUZI</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="w-full bg-heroBlack text-white">
+      {/* Section 1: Hero */}
+      <section className="relative w-full h-[70vh] overflow-hidden">
+        <Image
+          src="/hero-bg-2.jpeg"
+          alt="Heroes LK Hero"
+          fill
+          className="object-cover grayscale opacity-50"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-heroBlack via-transparent to-transparent" />
+        
+        <div className="absolute inset-0 flex items-center justify-center">
+            <Container className="text-center space-y-6">
+                <h1 className="text-5xl md:text-8xl font-bold font-oswald uppercase italic tracking-tighter text-white">
+                    STYLE THAT <span className="text-heroCrimson">MOVES</span> WITH YOU
+                </h1>
+                <p className="text-xl md:text-2xl font-sans font-light text-gray-300 max-w-2xl mx-auto uppercase tracking-widest">
+                    HEROESLK | URBAN PERFORMANCE WEAR
+                </p>
+            </Container>
         </div>
       </section>
 
-      {/* Section 1.5: Brand Story */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-light text-[#6B514B] mb-8">
-            Brand Story: Nuzi.co
-          </h2>
-          <div className="w-24 h-[1px] bg-nuziiRoseGold mx-auto mb-10" />
+      {/* Section 2: Brand Story */}
+      <section className="py-32 border-b border-gray-900">
+        <Container>
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+                <div className="space-y-8">
+                    <h2 className="text-4xl md:text-6xl font-bold font-oswald uppercase tracking-tight italic">
+                        The HEROESLK <br/> Philosophy
+                    </h2>
+                    <div className="w-20 h-2 bg-heroCrimson" />
+                    <div className="space-y-6 text-gray-400 text-lg leading-relaxed font-sans">
+                        <p>
+                            Born from the rhythm of the city and the need for everyday confidence. HEROESLK isn't just a label; it's a commitment to pieces that fit right, last long, and speak for themselves.
+                        </p>
+                        <p>
+                            We transition away from fast-fashion noise to focus on deliberate design. High-density textiles, articulated fits, and minimal branding — essentials that work as hard as you do.
+                        </p>
+                    </div>
+                </div>
+                <div className="relative aspect-square border border-gray-800 p-4">
+                    <div className="relative h-full w-full overflow-hidden">
+                        <Image
+                            src="/product-1.png"
+                            alt="Streetwear Detail"
+                            fill
+                            className="object-cover grayscale"
+                        />
+                    </div>
+                    {/* Decorative bits */}
+                    <div className="absolute -top-2 -right-2 w-12 h-12 border-t-2 border-r-2 border-heroCrimson" />
+                    <div className="absolute -bottom-2 -left-2 w-12 h-12 border-b-2 border-l-2 border-gray-600" />
+                </div>
+            </div>
+        </Container>
+      </section>
+
+      {/* Section 3: Our Mission */}
+      <section className="py-32 bg-gray-900/30">
+        <Container>
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-6xl font-bold font-oswald uppercase mb-4">
+              Our <span className="text-heroCrimson">Mission</span>
+            </h2>
+            <p className="text-gray-500 font-mono text-sm tracking-[0.3em] uppercase">Core Objectives</p>
+          </div>
           
-          <div className="space-y-6 text-lg text-[#6B514B]/80 font-light leading-relaxed">
-            <p>
-              Nuzi.co was born from a heartfelt dream shared with my husband to create a brand inspired by my name, Nushath. It was his long-held wish to see something meaningful and lasting grow from that name, and today, that dream has gracefully come to life.
-            </p>
-            <p>
-              NUZI.CO embodies elegance, confidence, and modest beauty through thoughtfully designed shawls, bags, jewelry, and feminine essentials. Each piece reflects our vision of simplicity, grace, and timeless fashion.
-            </p>
-            <p>
-              What began as a personal dream has blossomed into a brand that celebrates every woman’s unique elegance – where true beauty shines through confidence and authenticity.
-            </p>
+          <div className="grid md:grid-cols-3 gap-1">
+            <div className="p-12 border border-gray-800 bg-heroBlack hover:border-heroCrimson transition-colors group">
+              <h3 className="text-6xl font-bold font-oswald text-gray-800 mb-6 group-hover:text-heroCrimson/20 transition-colors">01</h3>
+              <p className="text-lg text-white font-bold uppercase tracking-wide mb-4">Accessibility</p>
+              <p className="text-gray-500 font-sans leading-relaxed">
+                To make premium-grade performance streetwear accessible to those who value quality over hype.
+              </p>
+            </div>
+            <div className="p-12 border border-gray-800 bg-heroBlack hover:border-heroCrimson transition-colors group">
+              <h3 className="text-6xl font-bold font-oswald text-gray-800 mb-6 group-hover:text-heroCrimson/20 transition-colors">02</h3>
+              <p className="text-lg text-white font-bold uppercase tracking-wide mb-4">Confidence</p>
+              <p className="text-gray-500 font-sans leading-relaxed">
+                To build a daily rotation that makes you feel put together, grounded, and ready for movement.
+              </p>
+            </div>
+            <div className="p-12 border border-gray-800 bg-heroBlack hover:border-heroCrimson transition-colors group">
+              <h3 className="text-6xl font-bold font-oswald text-gray-800 mb-6 group-hover:text-heroCrimson/20 transition-colors">03</h3>
+              <p className="text-lg text-white font-bold uppercase tracking-wide mb-4">Integrity</p>
+              <p className="text-gray-500 font-sans leading-relaxed">
+                To keep our process transparent and our designs honest. No gimmicks, just great gear.
+              </p>
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Section 2: Our Mission */}
-      <section className="py-24 bg-nuziiCream">
-        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-light text-[#6B514B] mb-6">
-              Our Mission
-            </h2>
-            <div className="w-24 h-[1px] bg-nuziiRoseGold mx-auto" />
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-8 bg-white rounded-sm shadow-sm hover:shadow-md transition-all duration-300 border border-nuziiSand/20 group">
-              <p className="text-lg text-[#6B514B]/80 leading-relaxed group-hover:text-[#6B514B] transition-colors">
-                To make quality modest friendly fashion <span className="font-medium text-nuziiRoseGoldDark">accessible to every woman</span>.
-              </p>
-            </div>
-            <div className="text-center p-8 bg-white rounded-sm shadow-sm hover:shadow-md transition-all duration-300 border border-nuziiSand/20 group">
-              <p className="text-lg text-[#6B514B]/80 leading-relaxed group-hover:text-[#6B514B] transition-colors">
-                To help you feel <span className="font-medium text-nuziiRoseGoldDark">confident, feminine, and put together</span>.
-              </p>
-            </div>
-            <div className="text-center p-8 bg-white rounded-sm shadow-sm hover:shadow-md transition-all duration-300 border border-nuziiSand/20 group">
-              <p className="text-lg text-[#6B514B]/80 leading-relaxed group-hover:text-[#6B514B] transition-colors">
-                To keep things <span className="font-medium text-nuziiRoseGoldDark">simple, honest, and stylish</span>.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: What Makes Nuzii Different */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-light text-[#6B514B] mb-6">
-              What Makes Nuzii <span className="font-medium text-nuziiRoseGoldDark">Different</span>
-            </h2>
-            <div className="w-24 h-[1px] bg-nuziiRoseGold mx-auto mb-8" />
-            <p className="text-lg text-[#6B514B]/70 max-w-2xl mx-auto font-light">
-              We choose every piece with intention.
-              <br />
-              If it does not feel good, it does not make it into our store.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {/* Section 4: Differentiators */}
+      <section className="py-32">
+        <Container>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-800 border border-gray-800">
             {differentiators.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center text-center p-8 bg-nuziiCream/50 rounded-sm hover:bg-nuziiCream transition-all duration-300 group"
+                className="bg-heroBlack p-12 hover:bg-gray-900/50 transition-all duration-300 group"
               >
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-nuziiRoseGoldDark mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                  <item.icon className="w-7 h-7" />
+                <div className="w-12 h-12 text-heroCrimson mb-8">
+                  <item.icon className="w-full h-full" />
                 </div>
-                <h3 className="text-xl font-medium text-[#6B514B] mb-3">
+                <h3 className="text-xl font-bold text-white font-oswald uppercase tracking-wider mb-4">
                   {item.title}
                 </h3>
-                <p className="text-sm text-[#6B514B]/70 leading-relaxed">
+                <p className="text-gray-500 text-sm leading-relaxed font-sans">
                   {item.description}
                 </p>
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Section 4: Our Values */}
-      <section className="py-24 bg-[#c8a19c]">
-        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-light text-white mb-6">
-              Our Values
-            </h2>
-            <div className="w-24 h-[1px] bg-white/50 mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      {/* Section 5: Our Values */}
+      <section className="py-32 bg-heroCrimson overflow-hidden relative">
+        <div className="absolute top-0 right-0 text-[20rem] font-bold font-oswald text-black/5 leading-none translate-x-1/4 -translate-y-1/4 pointer-events-none uppercase italic">
+            VALUES
+        </div>
+        <Container className="relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div
                 key={index}
-                className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
+                className="space-y-4"
               >
-                <h3 className="text-xl font-medium text-white mb-3">
+                <h3 className="text-3xl font-bold text-black font-oswald uppercase italic">
                   {value.title}
                 </h3>
-                <p className="text-sm text-white/90 leading-relaxed">
+                <p className="text-black/80 font-sans leading-relaxed">
                   {value.description}
                 </p>
               </div>
             ))}
           </div>
-
-          <div className="text-center">
-            <p className="text-xl md:text-2xl text-white font-light italic opacity-90">
-              &ldquo;We stand for fashion that lasts longer and feels better.&rdquo;
-            </p>
-          </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Section 5: Join the Nuzii Community - CTA */}
-      <section className="py-24 bg-nuziiBeige">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-light text-[#6B514B] mb-6">
-            Join the Nuzii <span className="font-medium text-nuziiRoseGoldDark">Community</span>
+      {/* Section 6: CTA */}
+      <section className="py-32 border-t border-gray-900">
+        <Container className="text-center max-w-4xl">
+          <h2 className="text-5xl md:text-7xl font-bold text-white font-oswald uppercase italic mb-8">
+            JOIN THE <span className="text-heroCrimson">COMMUNITY</span>
           </h2>
-          <div className="w-24 h-[1px] bg-nuziiRoseGold mx-auto mb-8" />
-          <p className="text-lg md:text-xl text-[#6B514B]/80 mb-4 leading-relaxed font-light">
-            Be part of a growing group of women who love effortless, modest style.
-          </p>
-          <p className="text-lg text-[#6B514B] mb-10 font-medium">
-            Get early access to new drops and exclusive offers.
+          <p className="text-xl text-gray-400 mb-12 font-sans font-light uppercase tracking-widest leading-relaxed">
+            BE PART OF THE ROTATION. <br/> EARLY ACCESS TO NEW DROPS AND EXCLUSIVE RELEASES.
           </p>
           <Link
             href="/shop"
-            className="inline-block px-10 py-3 bg-nuziiRoseGold hover:bg-nuziiRoseGoldDark text-white rounded-md text-lg font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            className="inline-block px-16 py-5 bg-white text-black hover:bg-heroCrimson hover:text-white transition-all duration-500 font-bold uppercase tracking-widest text-lg"
           >
-            Browse Our Collection
+            Explore Collection
           </Link>
-        </div>
+        </Container>
       </section>
     </div>
   );

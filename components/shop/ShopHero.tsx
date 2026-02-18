@@ -19,9 +19,11 @@ export default function ShopHero({ heroes }: ShopHeroProps) {
     const currentHero = heroes[currentIndex];
 
     // Placeholder image logic if no Sanity image
-    const bgImage = currentHero.heroImage 
-        ? urlFor(currentHero.heroImage).url() 
-        : "/images/landing/bg-carousel-2.png"; // Fallback to a concrete texture or similar
+    const bgImage = typeof currentHero.heroImage === 'string'
+        ? currentHero.heroImage
+        : currentHero.heroImage 
+            ? urlFor(currentHero.heroImage).url() 
+            : "/hero-bg-2.jpeg";
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev + 1) % heroes.length);
@@ -34,19 +36,14 @@ export default function ShopHero({ heroes }: ShopHeroProps) {
     return (
         <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-heroBlack border-b border-gray-800">
             {/* Background Image */}
-            <div className="absolute inset-0 z-0 opacity-50">
-                <div className="absolute inset-0 bg-heroBlack z-10 opacity-60"></div>
-                 {/* Placeholder gradient if no image */}
-                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black" />
-                {/* 
+            <div className="absolute inset-0 z-0 opacity-40">
                 <Image
                     src={bgImage}
                     alt={currentHero.mainHeading || "Hero image"}
                     fill
-                    className="object-cover grayscale"
+                    className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                     priority
                 /> 
-                */}
             </div>
             
             {/* Grid texture */}

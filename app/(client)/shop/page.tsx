@@ -1,3 +1,4 @@
+"use client"
 import ShopHero from "@/components/shop/ShopHero";
 import AllProductsSection from "@/components/shop/AllProductsSection";
 import { MOCK_CATEGORIES, MOCK_PRODUCTS } from "@/constants/mockData";
@@ -7,14 +8,14 @@ const ShopPage = () => {
   const heroes = [
     {
        _id: "hero1",
-       seasonTitle: "System.24 // Fall_Winter",
-       mainHeading: "URBAN ARMOR",
-       subheading: "Weather-resistant shells for the modern operator.",
-       primaryButtonText: "View Specs",
+       seasonTitle: "COLLECTION 2024",
+       mainHeading: "DAILY ROTATION",
+       subheading: "A refined lineup of everyday essentials and statement pieces made for effortless styling. Mix, match, repeat.",
+       primaryButtonText: "Browse Drop",
        primaryButtonLink: "#products",
-       secondaryButtonText: "Mission Brief",
+       secondaryButtonText: "Explore Styles",
        secondaryButtonLink: "#",
-       heroImage: null // Will be handled in component
+       heroImage: "/hero-bg-2.jpeg"
     }
   ];
 
