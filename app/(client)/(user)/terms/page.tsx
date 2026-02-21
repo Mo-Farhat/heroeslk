@@ -6,14 +6,14 @@ const TermsPage = () => {
         <section>
           <h2 className="text-xl font-semibold mb-2">1. Acceptance of Terms</h2>
           <p>
-            By accessing and using NUZII&apos;s services, you agree to be bound
+            By accessing and using HEROESLK&apos;s services, you agree to be bound
             by these Terms and Conditions.
           </p>
         </section>
         <section>
           <h2 className="text-xl font-semibold mb-2">2. Use of Services</h2>
           <p>
-            You agree to use NUZII&apos;s services only for lawful purposes and
+            You agree to use HEROESLK&apos;s services only for lawful purposes and
             in accordance with these Terms and Conditions.
           </p>
         </section>
@@ -22,8 +22,8 @@ const TermsPage = () => {
             3. Intellectual Property
           </h2>
           <p>
-            All content and materials available on NUZII&apos;s services are the
-            property of NUZII and are protected by applicable intellectual
+            All content and materials available on HEROESLK&apos;s services are the
+            property of HEROESLK and are protected by applicable intellectual
             property laws.
           </p>
         </section>
@@ -32,7 +32,7 @@ const TermsPage = () => {
             4. Limitation of Liability
           </h2>
           <p>
-            NUZII shall not be liable for any indirect, incidental, special,
+            HEROESLK shall not be liable for any indirect, incidental, special,
             consequential or punitive damages resulting from your use of our
             services.
           </p>
@@ -41,7 +41,7 @@ const TermsPage = () => {
           <h2 className="text-xl font-semibold mb-2">5. Governing Law</h2>
           <p>
             These Terms and Conditions shall be governed by and construed in
-            accordance with the laws of the jurisdiction in which NUZII
+            accordance with the laws of the jurisdiction in which HEROESLK
             operates.
           </p>
         </section>

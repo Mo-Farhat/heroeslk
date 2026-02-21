@@ -4,8 +4,8 @@ import { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NUZII",
-  description: "Elevate Your Everyday Style with NUZII",
+  title: "HEROESLK | Urban Performance Wear",
+  description: "Wear what feels like you. Everyday confidence with HEROESLK.",
 };
 
 import { Oswald, Inter } from "next/font/google";

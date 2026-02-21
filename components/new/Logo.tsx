@@ -8,10 +8,10 @@ interface Props {
 
 const Logo = ({ className }: Props) => {
   return (
-    <Link href={"/"} className={cn("group relative z-10", className)}>
-      <h1 className="font-oswald text-3xl font-bold tracking-tighter uppercase italic -skew-x-6 text-white group-hover:text-heroCrimson transition-colors duration-300">
-        HEROES<span className="text-heroCrimson group-hover:text-white transition-colors duration-300">LK</span>
-        <span className="block h-1 w-full bg-heroCrimson mt-[-4px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+    <Link href={"/"} className={cn("group relative z-10 flex items-center justify-center", className)}>
+      <h1 className="font-sans text-3xl md:text-4xl font-black uppercase tracking-[-0.05em] leading-none">
+        <span className="text-black group-hover:text-red-600 transition-colors duration-300">HEROES</span>
+        <span className="text-red-600 group-hover:text-black transition-colors duration-300">LK</span>
       </h1>
     </Link>
   );
