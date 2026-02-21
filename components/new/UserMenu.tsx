@@ -20,7 +20,7 @@ const UserMenu = () => {
         return (
             <Link
                 href="/signin"
-                className="text-nuziiText hover:text-nuziiRoseGoldDark transition-colors"
+                className="text-[#262626] hover:text-black transition-colors"
             >
                 <User className="w-5 h-5" />
             </Link>

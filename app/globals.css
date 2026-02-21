@@ -32,36 +32,36 @@ body {
   --font-oswald: "Oswald", sans-serif;
   --font-inter: "Inter", sans-serif;
 
-  /* Dark Theme Default */
-  --background: 0 0% 4%; /* #0a0a0a */
-  --foreground: 0 0% 93%; /* #ededed */
+  /* Light Theme Default (Incarnage) */
+  --background: 0 0% 95%; /* #F3F3F3 */
+  --foreground: 0 0% 15%; /* #262626 */
 
-  --card: 0 0% 7%; /* #121212 */
-  --card-foreground: 0 0% 93%;
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 0 0% 15%;
 
-  --popover: 0 0% 7%;
-  --popover-foreground: 0 0% 93%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 15%;
 
-  --primary: 0 0% 93%;
-  --primary-foreground: 0 0% 4%;
+  --primary: 0 0% 15%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 0 0% 12%; /* #1e1e1e */
-  --secondary-foreground: 0 0% 93%;
+  --secondary: 0 0% 90%; /* #E5E5E5 */
+  --secondary-foreground: 0 0% 15%;
 
-  --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 60%;
+  --muted: 0 0% 90%;
+  --muted-foreground: 0 0% 40%;
 
-  --accent: 0 72% 51%; /* Crimson #DC2626 converted to HSL approx */
-  --accent-foreground: 0 0% 98%;
+  --accent: 0 0% 90%;
+  --accent-foreground: 0 0% 15%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 20%;
-  --input: 0 0% 20%;
-  --ring: 0 72% 51%;
+  --border: 0 0% 80%;
+  --input: 0 0% 80%;
+  --ring: 0 0% 15%;
 
-  --radius: 0rem; /* Sharp edges */
+  --radius: 0px; /* Sharp edges */
 }
 
 @layer base {
@@ -75,9 +75,8 @@ body {
   h4,
   h5,
   h6 {
-    font-family: var(--font-oswald);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-family: var(--font-inter);
+    /* Remove uppercase globally to allow Title Case for products, selectively uppercase elsewhere via Tailwind classes */
   }
 
   .hoverEffect {

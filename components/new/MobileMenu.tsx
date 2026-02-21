@@ -18,7 +18,7 @@ const MobileMenu = ({ categories }: { categories: Category[] }) => {
   };
   return (
     <>
-      <button onClick={toggleSidebar} className="xl:hidden text-white hover:text-heroCrimson transition-colors">
+      <button onClick={toggleSidebar} className="xl:hidden text-[#262626] hover:text-black transition-colors">
         <AlignLeft className="w-6 h-6" />
       </button>
       <div className="xl:hidden">

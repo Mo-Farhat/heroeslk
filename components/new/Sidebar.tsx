@@ -49,28 +49,28 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
             exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             ref={sidebarRef}
-            className="fixed inset-y-0 left-0 z-50 w-[85%] max-w-sm bg-heroBlack border-r border-gray-800 shadow-2xl xl:hidden overflow-y-auto text-white"
+            className="fixed inset-y-0 left-0 z-50 w-[85%] max-w-sm bg-[#F3F3F3] border-r border-gray-200 shadow-2xl xl:hidden overflow-y-auto text-[#262626]"
           >
             <div className="flex flex-col h-full">
               {/* Header */}
-              <div className="p-6 flex items-center justify-between border-b border-gray-800">
-                <Logo className="w-24 text-white" />
+              <div className="p-6 flex items-center justify-between border-b border-gray-200 bg-white">
+                <Logo className="w-24 text-[#262626]" />
                 <button
                   onClick={onClose}
-                  className="p-2 text-white hover:text-heroCrimson transition-colors rounded-full hover:bg-gray-800"
+                  className="p-2 text-gray-500 hover:text-white transition-colors rounded-full hover:bg-black"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
               {/* Navigation Links */}
-              <div className="flex-1 py-6 px-4 flex flex-col gap-2 font-oswald uppercase tracking-wider">
+              <div className="flex-1 py-6 px-4 flex flex-col gap-2 font-bold uppercase tracking-wider">
                 <Link
                   onClick={onClose}
                   href="/"
                   className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between ${pathname === "/"
-                    ? "bg-heroCrimson text-white"
-                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
+                    ? "bg-black text-white"
+                    : "text-gray-500 hover:bg-white hover:text-black"
                     }`}
                 >
                   Home
@@ -81,8 +81,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                   <button
                     onClick={() => setIsShopOpen(!isShopOpen)}
                     className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between w-full ${pathname.startsWith("/shop") || pathname.startsWith("/category")
-                      ? "text-heroCrimson"
-                      : "text-gray-400 hover:bg-gray-900 hover:text-white"
+                      ? "text-black"
+                      : "text-gray-500 hover:bg-white hover:text-black"
                       }`}
                   >
                     <span>Shop</span>
@@ -101,13 +101,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden pl-4"
                       >
-                        <div className="pl-4 border-l-2 border-gray-800 flex flex-col gap-1 py-2">
+                        <div className="pl-4 border-l-2 border-gray-200 flex flex-col gap-1 py-2">
                           <Link
                             onClick={onClose}
                             href="/shop"
                             className={`px-4 py-2 rounded-none text-base transition-colors flex items-center gap-2 ${pathname === "/shop"
-                              ? "text-heroCrimson font-bold"
-                              : "text-gray-500 hover:text-white"
+                              ? "text-black font-bold"
+                              : "text-gray-500 hover:text-black"
                               }`}
                           >
                             All Products
@@ -118,8 +118,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                               key={item?.title}
                               href={`/category/${item?.slug?.current}`}
                               className={`px-4 py-2 rounded-none text-base transition-colors flex items-center gap-2 capitalize ${pathname === `/category/${item?.slug?.current}`
-                                ? "text-heroCrimson font-bold"
-                                : "text-gray-500 hover:text-white"
+                                ? "text-black font-bold"
+                                : "text-gray-500 hover:text-black"
                                 }`}
                             >
                               {item?.title}
@@ -135,8 +135,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                   onClick={onClose}
                   href="/about"
                   className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between ${pathname === "/about"
-                    ? "bg-heroCrimson text-white"
-                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
+                    ? "bg-black text-white"
+                    : "text-gray-500 hover:bg-white hover:text-black"
                     }`}
                 >
                   About
@@ -146,8 +146,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                   onClick={onClose}
                   href="/contact"
                   className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between ${pathname === "/contact"
-                    ? "bg-heroCrimson text-white"
-                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
+                    ? "bg-black text-white"
+                    : "text-gray-500 hover:bg-white hover:text-black"
                     }`}
                 >
                   Contact
@@ -157,8 +157,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
                   onClick={onClose}
                   href="/orders"
                   className={`px-4 py-3 rounded-none text-lg font-bold transition-all duration-300 flex items-center justify-between ${pathname === "/orders"
-                    ? "bg-heroCrimson text-white"
-                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
+                    ? "bg-black text-white"
+                    : "text-gray-500 hover:bg-white hover:text-black"
                     }`}
                 >
                   My Orders
@@ -166,8 +166,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, categories }) => {
               </div>
 
               {/* Footer */}
-              <div className="p-6 border-t border-gray-800 bg-gray-900/50">
-                <SocialMedia />
+              <div className="p-6 border-t border-gray-200 bg-white">
+                <SocialMedia 
+                  iconClassName="border-gray-200 text-gray-400 hover:border-black hover:bg-black hover:text-white"
+                  tooltipClassName="bg-black text-white"
+                />
                 <p className="text-center text-xs text-gray-500 mt-4 tracking-widest uppercase">
                   © {new Date().getFullYear()} HEROES LK.
                 </p>

@@ -20,13 +20,13 @@ const testimonials = [
 
 export default function CustomerLove() {
     return (
-        <section className="py-20 bg-heroBlack overflow-hidden border-b border-gray-900">
+        <section className="py-20 bg-[#F3F3F3] overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 font-oswald uppercase tracking-wide">
+                    <h2 className="text-3xl md:text-5xl font-bold text-[#262626] mb-2 uppercase tracking-wide">
                         Field Reports
                     </h2>
-                    <p className="text-gray-500 font-mono text-sm tracking-widest uppercase">
+                    <p className="text-gray-500 font-medium text-sm tracking-widest uppercase mt-4">
                         Intel from deployed operatives.
                     </p>
                 </div>
@@ -35,29 +35,29 @@ export default function CustomerLove() {
                     {testimonials.map((item, index) => (
                         <div
                             key={index}
-                            className="relative bg-gray-900/50 p-8 border-l-2 border-gray-700 hover:border-heroCrimson transition-colors duration-300"
+                            className="relative bg-white shadow-sm p-8 hover:shadow-md transition-shadow duration-300"
                         >
-                            <div className="absolute -top-4 -right-4 w-10 h-10 bg-gray-800 text-heroCrimson flex items-center justify-center border border-gray-700">
+                            <div className="absolute -top-4 -right-4 w-10 h-10 bg-black text-white flex items-center justify-center rounded-full">
                                 <Terminal className="w-5 h-5" />
                             </div>
 
-                            <div className="flex gap-1 mb-4 text-heroCrimson">
+                            <div className="flex gap-1 mb-4 text-black">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-3 h-3 fill-current" />
+                                    <Star key={i} className="w-4 h-4 fill-current" />
                                 ))}
                             </div>
 
-                            <p className="text-gray-300 text-lg font-medium italic mb-6 leading-relaxed font-sans">
+                            <p className="text-[#262626] text-lg font-medium italic mb-6 leading-relaxed font-sans">
                                 &ldquo;{item.quote}&rdquo;
                             </p>
 
-                            <div className="flex items-center gap-3 border-t border-gray-800 pt-4">
-                                <div className="w-10 h-10 bg-gray-800 flex items-center justify-center text-xs font-bold text-white">
+                            <div className="flex items-center gap-3 border-t border-gray-200 pt-4">
+                                <div className="w-10 h-10 bg-[#F3F3F3] flex items-center justify-center text-sm font-bold text-[#262626] rounded-full">
                                     {item.author.charAt(0)}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-white uppercase tracking-wider font-oswald">{item.author}</h4>
-                                    <span className="text-[10px] text-heroCrimson font-bold uppercase tracking-widest font-mono">
+                                    <h4 className="font-bold text-[#262626] uppercase tracking-wider">{item.author}</h4>
+                                    <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">
                                         {item.role}
                                     </span>
                                 </div>
@@ -67,10 +67,10 @@ export default function CustomerLove() {
                 </div>
 
                 {/* Social Proof Elements */}
-                <div className="mt-16 flex flex-wrap justify-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
+                <div className="mt-16 flex flex-wrap justify-center gap-12 opacity-50 grayscale transition-all duration-500">
                     {/* Placeholders for partner logos */}
                      {[...Array(4)].map((_, i) => (
-                        <div key={i} className="h-8 w-32 bg-gray-700/50 skew-x-12" />
+                        <div key={i} className="h-8 w-32 bg-gray-300 rounded-sm" />
                     ))}
                 </div>
             </div>

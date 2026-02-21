@@ -20,7 +20,7 @@ const ShopPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-heroBlack text-white">
+    <div className="min-h-screen bg-[#F3F3F3] text-[#262626]">
       {/* Hero Section */}
       <ShopHero heroes={heroes as any} />
 

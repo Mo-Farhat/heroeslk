@@ -57,7 +57,7 @@ export default function Hero() {
     const activeImage = CAROUSEL_IMAGES[selectedIndex];
 
     return (
-        <section className="relative w-full h-[85vh] overflow-hidden bg-heroBlack">
+        <section className="relative w-full h-[85vh] overflow-hidden bg-[#F3F3F3]">
             {/* Carousel Background */}
             <div className="absolute inset-0 z-0 opacity-50" ref={emblaRef}>
                 <div className="flex h-full">
@@ -67,78 +67,61 @@ export default function Hero() {
                                 src={image.src}
                                 alt={image.headline}
                                 fill
-                                className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                                className="object-cover transition-all duration-1000"
                                 priority={index === 0}
                             />
-                            <div className="absolute inset-0 bg-black/40" />
+                            {/* Dark gradient from bottom for text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Grid Overlay Texture */}
-            <div className="absolute inset-0 z-20 opacity-10 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
-
             {/* Content Overlay */}
-            <div className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4">
+            <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-start justify-end text-left p-6 md:p-16 pb-24 md:pb-24">
                 <motion.div
                     key={selectedIndex}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="flex flex-col items-center gap-8 max-w-5xl border border-white/10 bg-black/40 backdrop-blur-sm p-12"
+                    className="flex flex-col items-start gap-6 max-w-4xl"
                 >
                     {/* Headline */}
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-none uppercase font-oswald italic">
-                        {activeImage.headline.split(' ').map((word, i) => (
-                          <span key={i} className={i === activeImage.headline.split(' ').length - 1 ? "text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500" : ""}>
-                            {word}{' '}
-                          </span>
-                        ))}
+                    <h1 className="text-5xl md:text-7xl lg:text-[100px] font-black tracking-[-0.02em] text-white leading-[0.9] uppercase">
+                        {activeImage.headline}
                     </h1>
 
                     {/* Subheadline */}
-                    <p className="text-lg md:text-xl text-gray-300 font-medium max-w-2xl tracking-wide uppercase">
+                    <p className="text-lg md:text-xl text-gray-200 font-medium max-w-2xl tracking-wide uppercase">
                         {activeImage.subheadline}
                     </p>
 
-                    {/* CTA Buttons */}
-                    <div className="pt-4 flex flex-col sm:flex-row gap-6 w-full justify-center">
+                    {/* CTA Button */}
+                    <div className="pt-4 flex w-full justify-start">
                         <Link
                             href="/shop"
-                            className="inline-flex items-center justify-center gap-2 bg-heroCrimson hover:bg-red-700 text-white px-10 py-4 font-bold uppercase tracking-widest transition-all duration-300 hover:scale-105 min-w-[200px] border border-transparent"
+                            className="inline-flex items-center justify-center gap-2 bg-white text-black px-12 py-4 font-bold uppercase tracking-widest rounded-full transition-transform duration-300 hover:scale-[1.02] min-w-[200px]"
                         >
                             {activeImage.cta1}
-                        </Link>
-                        <Link
-                            href="/shop"
-                            className="inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white hover:text-black text-white px-10 py-4 font-bold uppercase tracking-widest transition-all duration-300 border border-white min-w-[200px]"
-                        >
-                            {activeImage.cta2}
                         </Link>
                     </div>
                 </motion.div>
             </div>
 
             {/* Carousel Indicators */}
-            <div className="absolute bottom-10 left-10 z-40 flex gap-2">
+            <div className="absolute bottom-8 right-8 z-40 flex gap-2">
                 {CAROUSEL_IMAGES.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => emblaApi?.scrollTo(index)}
                         className={`h-1 transition-all duration-300 ${
                             index === selectedIndex
-                                ? "bg-heroCrimson w-12"
-                                : "bg-gray-700 w-6 hover:bg-gray-500"
+                                ? "bg-white w-12"
+                                : "bg-white/50 w-6 hover:bg-white/80"
                         }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}
-            </div>
-            
-            {/* Tagline */}
-            <div className="absolute bottom-10 right-10 text-xs font-mono text-gray-400 hidden md:block uppercase tracking-widest">
-                Wear it your way. Every day.
             </div>
         </section>
     );

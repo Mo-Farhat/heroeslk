@@ -76,14 +76,14 @@ const CartPage = () => {
   };
 
   return (
-    <div className="bg-heroBlack min-h-screen pb-20 pt-10 text-white">
+    <div className="bg-[#F3F3F3] min-h-screen pb-20 pt-10 text-[#262626]">
       {user ? (
         <Container>
           {groupedItems?.length ? (
             <>
-              <div className="flex items-center gap-4 py-8 border-b border-gray-800 mb-8">
-                <ShoppingBag className="h-6 w-6 text-heroCrimson" />
-                <h1 className="text-3xl font-bold font-oswald uppercase track-wide">Your Bag</h1>
+              <div className="flex items-center gap-4 py-8 border-b border-gray-200 mb-8">
+                <ShoppingBag className="h-8 w-8 text-black" />
+                <h1 className="text-4xl font-bold uppercase tracking-wide">Your Bag</h1>
               </div>
               
               <div className="grid lg:grid-cols-3 gap-8">
@@ -94,16 +94,16 @@ const CartPage = () => {
                       return (
                         <div
                           key={product?._id}
-                          className="bg-gray-900/50 border border-gray-800 p-4 flex flex-col md:flex-row gap-6 relative group hover:border-heroCrimson/50 transition-colors"
+                          className="bg-white border border-gray-100 p-6 flex flex-col md:flex-row gap-6 relative group rounded-xl shadow-sm hover:shadow-md hover:border-gray-200 transition-all"
                         >
                           {/* Image */}
-                          <div className="relative w-full md:w-32 aspect-square bg-black border border-gray-800">
+                          <div className="relative w-full md:w-32 aspect-[2/3] bg-gray-100 overflow-hidden md:flex-shrink-0">
                             {product?.images && (
                                 <Image
                                   src={urlFor(product.images[0]).url()}
                                   alt="productImage"
                                   fill
-                                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                             )}
                           </div>
@@ -111,30 +111,30 @@ const CartPage = () => {
                           {/* Details */}
                           <div className="flex-1 flex flex-col justify-between">
                               <div>
-                                  <h2 className="text-xl font-bold font-oswald uppercase tracking-wide mb-1">
+                                  <h2 className="text-lg font-bold uppercase tracking-wide mb-1 text-[#262626]">
                                       {product?.name}
                                   </h2>
-                                  <p className="text-sm text-gray-400 font-mono mb-2">
+                                  <p className="text-sm text-gray-500 font-medium mb-2 uppercase">
                                       {product?.variantInfo || "Standard Fit"}
                                   </p>
-                                  <div className="flex gap-4 text-xs font-mono uppercase text-gray-500">
+                                  <div className="flex gap-4 text-xs font-bold uppercase text-gray-400">
                                       <span>Variant: {product?.variant || "N/A"}</span>
                                   </div>
                               </div>
                               
                               <div className="flex items-center gap-4 mt-4">
-                                  <button onClick={() => handleDeleteProduct(product?._id)} className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 hover:text-heroCrimson transition-colors">
+                                  <button onClick={() => handleDeleteProduct(product?._id)} className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 hover:text-red-500 transition-colors">
                                       <Trash className="w-4 h-4" /> Remove
                                   </button>
-                                  <button className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 hover:text-white transition-colors">
+                                  <button className="flex items-center gap-2 text-xs font-bold uppercase text-gray-500 hover:text-black transition-colors">
                                       <Heart className="w-4 h-4" /> Save For Later
                                   </button>
                               </div>
                           </div>
 
                           {/* Price & Quantity */}
-                          <div className="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-4 mt-4 md:mt-0 border-t md:border-t-0 border-gray-800 pt-4 md:pt-0">
-                             <div className="font-mono text-xl text-white">
+                          <div className="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-start gap-4 mt-4 md:mt-0 border-t md:border-t-0 border-gray-200 pt-4 md:pt-0">
+                             <div className="font-sans text-xl text-[#262626] font-bold">
                                 <PriceFormatter
                                   amount={(product?.price as number) * itemCount}
                                   className="font-bold"
@@ -149,7 +149,7 @@ const CartPage = () => {
                     <div className="flex justify-start pt-4">
                         <Button
                         onClick={handleResetCart}
-                        className="bg-transparent border border-gray-800 text-gray-500 hover:border-heroCrimson hover:text-heroCrimson uppercase font-bold tracking-widest text-xs py-6 px-8 rounded-none transition-colors"
+                        className="bg-transparent border border-gray-300 text-gray-500 hover:border-black hover:text-black uppercase font-bold tracking-widest text-xs py-5 px-8 rounded-full transition-colors"
                         >
                         Clear Cart
                         </Button>
@@ -160,48 +160,48 @@ const CartPage = () => {
 
                 {/* Summary View */}
                 <div className="lg:col-span-1">
-                  <div className="bg-gray-900 border border-gray-800 p-8 sticky top-24">
-                    <h2 className="text-xl font-bold font-oswald uppercase mb-6 border-b border-gray-800 pb-2">
+                  <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-8 sticky top-24">
+                    <h2 className="text-xl font-bold uppercase mb-6 border-b border-gray-200 pb-4 text-[#262626]">
                       Order Summary
                     </h2>
-                    <div className="space-y-4 font-mono text-sm text-gray-400">
+                    <div className="space-y-4 font-medium text-sm text-gray-600">
                       <div className="flex justify-between">
                         <span className="uppercase">Subtotal</span>
-                        <PriceFormatter amount={getSubTotalPrice()} className="text-white" />
+                        <PriceFormatter amount={getSubTotalPrice()} className="text-[#262626] font-bold" />
                       </div>
                       <div className="flex justify-between">
                         <span className="uppercase">Savings</span>
                         <PriceFormatter
                           amount={getSubTotalPrice() - getTotalPrice()}
-                          className="text-heroCrimson"
+                          className="text-black font-bold"
                         />
                       </div>
                       <div className="flex justify-between">
                         <span className="uppercase">Shipping</span>
-                        <span className="text-green-500 font-bold tracking-widest">FREE</span>
+                        <span className="text-green-600 font-bold tracking-widest">FREE</span>
                       </div>
 
-                      <div className="h-px bg-gray-800 my-4" />
+                      <div className="h-px bg-gray-200 my-4" />
                       
-                      <div className="flex justify-between font-bold text-lg text-white font-oswald uppercase tracking-wide">
+                      <div className="flex justify-between font-bold text-lg text-[#262626] uppercase tracking-wide">
                         <span>Total Amount</span>
                         <PriceFormatter
                           amount={useCartStore?.getState().getTotalPrice()}
-                          className="font-bold"
+                          className="font-black"
                         />
                       </div>
                       
                       <Button
                         onClick={handleCheckout}
                         disabled={loading}
-                        className="w-full bg-heroCrimson hover:bg-red-700 text-white font-bold uppercase tracking-widest py-6 rounded-none mt-6 transition-all duration-300"
+                        className="w-full bg-black hover:bg-[#252627] text-white font-bold uppercase tracking-widest py-6 rounded-full mt-6 transition-all duration-300 shadow-md"
                         size="lg"
                       >
                         {loading ? "PROCESSING..." : "Secure Checkout"}
                       </Button>
                       
-                       <div className="flex items-center justify-center gap-2 mt-4 text-[10px] text-gray-600 uppercase font-mono tracking-tighter">
-                           <ShieldCheck className="w-3 h-3" /> Secure checkout. Fast shipping. Easy returns.
+                       <div className="flex items-center justify-center gap-2 mt-4 text-[10px] text-gray-500 uppercase font-medium tracking-wide">
+                           <ShieldCheck className="w-4 h-4 text-green-600" /> Secure checkout. Fast shipping. Easy returns.
                        </div>
                     </div>
                   </div>

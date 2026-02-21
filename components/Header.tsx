@@ -17,33 +17,33 @@ const Header = async () => {
   const categories = MOCK_CATEGORIES; // Use mock data directly
 
   return (
-    <header className="bg-heroBlack sticky top-0 z-50 border-b border-gray-800 py-4 transition-all duration-300">
+    <header className="bg-white sticky top-0 z-50 py-4 transition-all duration-300">
       <Container className="flex items-center justify-between gap-4">
         {/* Left: Navigation Menu */}
-        <div className="hidden xl:block w-1/3">
+        <div className="hidden xl:block w-1/3 text-[#262626]">
           <HeaderMenu categories={categories} />
         </div>
 
         {/* Mobile Menu Trigger (Visible on mobile only) */}
-        <div className="xl:hidden w-1/3">
+        <div className="xl:hidden w-1/3 text-[#262626]">
           <MobileMenu categories={categories} />
         </div>
 
         {/* Center: Logo */}
         <div className="w-1/3 flex justify-center">
-          <Logo className="w-28 -mt-1.5 xl:mt-0 text-white" />
+          <Logo className="w-28 -mt-1.5 xl:mt-0 text-[#262626]" />
         </div>
 
         {/* Right: Utility Icons */}
-        <div className="w-1/3 flex items-center justify-end gap-6 text-white">
+        <div className="w-1/3 flex items-center justify-end gap-6 text-[#262626]">
           <SearchBar />
 
           <CartIcon />
 
-          <Link href={"/orders"} className="hidden md:block group relative text-gray-300 hover:text-heroCrimson transition-colors">
+          <Link href={"/orders"} className="hidden md:block group relative text-[#262626] hover:text-gray-500 transition-colors">
             <ListOrdered className="w-5 h-5" />
             {orders && orders.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-heroCrimson text-white h-4 w-4 rounded-full text-[10px] font-medium flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-black text-white h-4 w-4 rounded-full text-[10px] font-medium flex items-center justify-center">
                 {orders.length}
               </span>
             )}

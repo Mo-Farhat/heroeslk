@@ -44,7 +44,7 @@ const ImageView = ({ images = [] }: Props) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full relative aspect-[3/4] bg-gray-900 border border-gray-800 overflow-hidden"
+          className="w-full relative aspect-[2/3] bg-gray-100 overflow-hidden"
         >
           {activeUrl && (
             <Image
@@ -52,14 +52,9 @@ const ImageView = ({ images = [] }: Props) => {
                 alt="productImage"
                 fill
                 priority
-                className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
+                className="object-cover object-center transition-all duration-500"
             />
           )}
-
-           {/* Tech Overlays */}
-           <div className="absolute top-4 left-4 border-l-2 border-heroCrimson pl-2">
-                <p className="text-[10px] text-heroCrimson font-mono uppercase leading-none">IMG_SRC_01</p>
-           </div>
         </motion.div>
       </AnimatePresence>
 
@@ -72,10 +67,10 @@ const ImageView = ({ images = [] }: Props) => {
             <button
                 key={idx}
                 onClick={() => setActive(image)}
-                className={`relative aspect-square border overflow-hidden transition-all ${
+                className={`relative aspect-[2/3] overflow-hidden transition-all border ${
                     isActive 
-                    ? "border-heroCrimson opacity-100" 
-                    : "border-gray-800 opacity-60 hover:opacity-100 hover:border-gray-600"
+                    ? "border-black opacity-100" 
+                    : "border-transparent hover:border-gray-300 opacity-60 hover:opacity-100"
                 }`}
             >
                 {imgUrl && (

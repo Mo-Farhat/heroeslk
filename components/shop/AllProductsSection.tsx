@@ -39,15 +39,15 @@ export default function AllProductsSection({
             "ALL PROTOCOLS";
 
     return (
-        <section className="py-16 px-6 md:px-12 bg-heroBlack min-h-screen">
+        <section className="py-16 px-6 md:px-12 bg-[#F3F3F3] min-h-screen">
             <div className="container mx-auto max-w-7xl">
                 {/* Section Header with Filter */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 border-b border-gray-800 pb-6">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 border-b border-gray-200 pb-6">
                     <div>
-                        <h2 className="text-4xl md:text-5xl font-bold font-oswald text-white uppercase tracking-tighter mb-2">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#262626] uppercase tracking-tighter mb-2">
                             Deployment Gear
                         </h2>
-                        <p className="text-gray-400 font-mono text-sm tracking-widest uppercase">
+                        <p className="text-gray-500 font-medium text-sm tracking-widest uppercase">
                             Full inventory listing.
                         </p>
                     </div>
@@ -56,28 +56,28 @@ export default function AllProductsSection({
                     <div className="relative z-30">
                         <button
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                            className="flex items-center gap-3 px-6 py-3 bg-black border border-gray-700 text-white hover:border-heroCrimson transition-all duration-300 min-w-[220px] justify-between font-mono text-sm uppercase"
+                            className="flex items-center gap-3 px-6 py-2.5 bg-white border border-gray-200 text-[#262626] hover:border-black transition-all duration-300 min-w-[220px] justify-between font-bold text-sm uppercase rounded-full shadow-sm"
                         >
                             <span className="truncate">
                                 {currentCategoryName}
                             </span>
                             <ChevronDown
-                                className={`w-4 h-4 text-heroCrimson transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
+                                className={`w-4 h-4 text-[#262626] transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
                                     }`}
                             />
                         </button>
 
                         {/* Dropdown Menu */}
                         {isDropdownOpen && (
-                            <div className="absolute top-full right-0 mt-0 w-full bg-black border border-gray-700 border-t-0 shadow-xl z-50">
+                            <div className="absolute top-full right-0 mt-2 w-full bg-white border border-gray-100 shadow-xl z-50 rounded-xl overflow-hidden">
                                 <button
                                     onClick={() => {
                                         setSelectedCategory("all");
                                         setIsDropdownOpen(false);
                                     }}
-                                    className={`w-full text-left px-4 py-3 text-sm font-mono uppercase transition-colors ${selectedCategory === "all"
-                                        ? "bg-heroCrimson text-white"
-                                        : "hover:bg-gray-900 text-gray-300"
+                                    className={`w-full text-left px-4 py-3 text-sm font-bold uppercase transition-colors ${selectedCategory === "all"
+                                        ? "bg-gray-100 text-[#262626]"
+                                        : "hover:bg-gray-50 text-gray-500 hover:text-[#262626]"
                                         }`}
                                 >
                                     ALL PROTOCOLS
@@ -91,9 +91,9 @@ export default function AllProductsSection({
                                                 setIsDropdownOpen(false);
                                             }
                                         }}
-                                        className={`w-full text-left px-4 py-3 text-sm font-mono uppercase transition-colors ${selectedCategory === category.slug?.current
-                                            ? "bg-heroCrimson text-white"
-                                            : "hover:bg-gray-900 text-gray-300"
+                                        className={`w-full text-left px-4 py-3 text-sm font-bold uppercase transition-colors ${selectedCategory === category.slug?.current
+                                            ? "bg-gray-100 text-[#262626]"
+                                            : "hover:bg-gray-50 text-gray-500 hover:text-[#262626]"
                                             }`}
                                     >
                                         {category.title}
@@ -121,8 +121,8 @@ export default function AllProductsSection({
                 </AnimatePresence>
 
                 {products.length === 0 && (
-                     <div className="text-center py-20 border border-dashed border-gray-800">
-                        <p className="text-gray-500 font-mono uppercase">
+                     <div className="text-center py-20 border border-dashed border-gray-300 rounded-2xl">
+                        <p className="text-gray-500 font-bold uppercase">
                             No units found in this protocol.
                         </p>
                     </div>
@@ -130,8 +130,8 @@ export default function AllProductsSection({
                 
                 {/* Product Count */}
                 {products.length > 0 && (
-                    <div className="text-center mt-12 pt-8 border-t border-gray-800">
-                        <p className="text-gray-600 font-mono text-xs uppercase tracking-widest">
+                    <div className="text-center mt-12 pt-8 border-t border-gray-200">
+                        <p className="text-gray-500 font-medium text-xs uppercase tracking-widest">
                             Displaying {products.length} Unit{products.length !== 1 ? "s" : ""}
                         </p>
                     </div>
