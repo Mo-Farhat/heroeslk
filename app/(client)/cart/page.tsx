@@ -149,7 +149,7 @@ const CartPage = () => {
                     <div className="flex justify-start pt-4">
                         <Button
                         onClick={handleResetCart}
-                        className="bg-transparent border border-gray-800 text-gray-500 hover:bg-white hover:text-black uppercase font-bold tracking-widest text-xs py-6 px-8 rounded-none"
+                        className="bg-transparent border border-gray-800 text-gray-500 hover:border-heroCrimson hover:text-heroCrimson uppercase font-bold tracking-widest text-xs py-6 px-8 rounded-none transition-colors"
                         >
                         Clear Cart
                         </Button>

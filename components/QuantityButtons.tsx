@@ -28,35 +28,31 @@ const QuantityButtons = ({ product, className, borderStyle }: Props) => {
   return (
     <div
       className={twMerge(
-        "flex items-center gap-1 pb-1 text-base",
+        "flex items-center border border-gray-800 bg-black/50",
         borderStyle,
         className
       )}
     >
-      <Button
-        variant="outline"
-        size="icon"
-        className="w-6 h-6 cursor-pointer"
+      <button
+        className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors disabled:opacity-20"
         onClick={handleRemoveProduct}
         disabled={itemCount === 0 || isOutOfStock}
       >
-        <HiMinus />
-      </Button>
-      <span className="font-semibold w-8 text-center text-darkColor">
+        <HiMinus className="w-4 h-4" />
+      </button>
+      <span className="font-mono font-bold w-10 text-center text-white border-x border-gray-800">
         {itemCount}
       </span>
-      <Button
-        variant="outline"
-        size="icon"
-        className="w-6 h-6 cursor-pointer"
+      <button
+        className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors disabled:opacity-20"
         onClick={() => {
           addItem(product);
-          toast.success("Quantity increased successfully!");
+          toast.success("ITEM ADDED");
         }}
         disabled={isOutOfStock}
       >
-        <HiPlus />
-      </Button>
+        <HiPlus className="w-4 h-4" />
+      </button>
     </div>
   );
 };
