@@ -62,7 +62,7 @@ const SignUpPage = () => {
                         Create Account
                     </h1>
                     <p className="text-nuziiTextLight text-sm">
-                        Join Nuzii for exclusive offers and faster checkout
+                        Join HEROESLK for exclusive offers and faster checkout
                     </p>
                 </div>
 

@@ -9,8 +9,8 @@ import DisableDraftMode from "@/components/DisableDraftMode";
 import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
-  title: "NUZII",
-  description: "Elevate Your Everyday Style with NUZII",
+  title: "HEROESLK | Urban Performance Wear",
+  description: "Wear what feels like you. Everyday confidence with HEROESLK.",
 };
 
 export default async function RootLayout({
