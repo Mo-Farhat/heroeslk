@@ -59,7 +59,7 @@ export default function Hero() {
     return (
         <section className="relative w-full h-[85vh] overflow-hidden bg-[#F3F3F3]">
             {/* Carousel Background */}
-            <div className="absolute inset-0 z-0 opacity-50" ref={emblaRef}>
+            <div className="absolute inset-0 z-0" ref={emblaRef}>
                 <div className="flex h-full">
                     {CAROUSEL_IMAGES.map((image, index) => (
                         <div key={image.id} className="relative flex-[0_0_100%] h-full min-w-0">
@@ -70,8 +70,6 @@ export default function Hero() {
                                 className="object-cover transition-all duration-1000"
                                 priority={index === 0}
                             />
-                            {/* Dark gradient from bottom for text readability */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         </div>
                     ))}
                 </div>
